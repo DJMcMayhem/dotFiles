@@ -10,8 +10,8 @@ set confirm
 set guioptions+=c
 
 "Prevents '.swp' files from being placed in the current directory
-set backupdir=~/.vimBackups,.
-set directory=~/.vimBackups,.
+set backupdir=~/.vim/Backups,.
+set directory=~/.vim/Backups,.
 
 "Indent setting
 set autoindent
