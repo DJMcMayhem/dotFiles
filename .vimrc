@@ -20,13 +20,16 @@ set smarttab
 set tabstop=4
 set shiftwidth=4
 
+"Fold settings
+nnoremap <space> za
+
 "For quick commenting and uncommenting
 let @c='0i//j' 
 let @d='^xxj'
 
 "For quick indenting and unindenting
 let @t='I    j'    
-let @u='^€kbj'
+let @u='0xxxxj'
 
 "removes all consecutive duplicates from the file, and then saves. Very useful since my SimMIndexer likes to write the same 'Hold' command thousands of times in a row.
 let @h=':%s/^\(.*\)\(\n\1\)\+/\1' 
@@ -76,6 +79,10 @@ inoremap     "_dd
 "\<\d*\.\d*e-\d*                    "Matches all numbers in scientific notation
 "%s/\v([a-z])([A-Z])/\1_\l\2/gc     "Replaces 'camelCase' with 'snake_case' Thanks @muru and @Peter Rincker: http://vi.stackexchange.com/a/7026/2920
 "s/\( *\)\([a-z]\)\( *\)/\3\2\1/    "Moves the space on one side of a letter to the other side of that letter.
+"s/ \([0-9]\|[A-F]\)/ 0x\1/g        "Replaces 00-FF with 0x00-0xFF
+
+"Fun macros:
+"qqfca[0]lyT(f"r'la' || pa == 'f"r'jj0@qq
 
 "Make visual selection more visible
 hi visual term=reverse cterm=reverse guibg=darkGray
