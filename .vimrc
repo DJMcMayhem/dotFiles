@@ -3,6 +3,7 @@ syntax on
 set backspace=2
 set number
 set ruler
+set incsearch
 
 "Rather than failing an ex command, ask for confirmation
 set confirm
