@@ -3,6 +3,10 @@ syntax on
 set backspace=2
 set number
 set ruler
+set incsearch
+
+"Stops vim from wrapping in the middle of a word.
+set linebreak 
 
 "Rather than failing an ex command, ask for confirmation
 set confirm
