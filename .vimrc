@@ -5,6 +5,7 @@ set number
 set ruler
 set incsearch
 set showmode
+set showcmd
 
 "Stops vim from wrapping in the middle of a word.
 set linebreak 
