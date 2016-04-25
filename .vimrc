@@ -4,6 +4,7 @@ set backspace=2
 set number
 set ruler
 set incsearch
+set showmode
 
 "Stops vim from wrapping in the middle of a word.
 set linebreak 
@@ -72,9 +73,14 @@ vnoremap <BS>    x
 nnoremap N Nzz
 nnoremap n nzz
 
+"Make vim behave like a traditional editor
 inoremap  :w<cr>
 nnoremap  :w<cr>
 inoremap  u
+
+set selectmode+=mouse
+snoremap <C-v> "+y
+snoremap <C-x> "+d
 
 nnoremap <C-i> bi
 nnoremap <C-I> Bi
