@@ -4,7 +4,6 @@
 #Whitelist some folders
 
 !.gitignore
-!.gitconfig
 !.README.md
 !.vimrc
 !.vsvimrc
