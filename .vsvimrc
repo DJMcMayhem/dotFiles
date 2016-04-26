@@ -1,1 +1,3 @@
 source ~\.vimrc
+
+let @u="0xj"

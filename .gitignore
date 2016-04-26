@@ -1,0 +1,13 @@
+#Blacklist ALL files and folders
+/*
+
+#Whitelist some folders
+
+!.gitignore
+!.gitconfig
+!.README.md
+!.vimrc
+!.vsvimrc
+!.vim/
+!.i3/
+!.config/
