@@ -7,17 +7,20 @@ set incsearch
 set showmode
 set showcmd
 
-"Stops vim from wrapping in the middle of a word.
-set linebreak 
-
-"Rather than failing an ex command, ask for confirmation
+"Rather than failing a command, ask for confirmation
 set confirm
+
 "In gvim, don't open a dialog box when asking for confirmation
 set guioptions+=c
 
 "Prevents '.swp' files from being placed in the current directory
 set backupdir=~/.vim/Backups,.
 set directory=~/.vim/Backups,.
+
+"Set cursor shape (xterm)
+let &t_SI = "\<Esc>[6 q"
+let &t_SR = "\<Esc>[4 q"
+let &t_EI = "\<Esc>[2 q"
 
 "Indent setting
 set autoindent
@@ -58,9 +61,10 @@ nnoremap <C-j> <C-w>j
 
 "Wrap options
 set wrap
+set linebreak 
 set display+=lastline
 
-"Makes 'hjkl' work better with wrapped lines
+"Make 'hjkl' work better with wrapped lines
 nnoremap j gj
 nnoremap gj j 
 nnoremap k gk
@@ -107,8 +111,6 @@ hi visual term=reverse cterm=reverse guibg=darkGray
 "ex commands
 cnoreabbrev rc ~\.vimrc
 cnoreabbrev et tabedit
-
-
 
 "Scripts
 function! s:DiffWithSaved()
