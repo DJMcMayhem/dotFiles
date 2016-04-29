@@ -64,11 +64,15 @@ set wrap
 set linebreak 
 set display+=lastline
 
-"Make 'hjkl' work better with wrapped lines
+"Make basic movements work better with wrapped lines
 nnoremap j gj
 nnoremap gj j 
 nnoremap k gk
 nnoremap gk k 
+nnoremap $ g$
+nnoremap g$ $ 
+nnoremap 0 g0
+nnoremap g0 0 
 
 "Make backspace delete in normal
 nnoremap <BS>    <BS>x
