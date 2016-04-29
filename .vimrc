@@ -17,10 +17,12 @@ set guioptions+=c
 set backupdir=~/.vim/Backups,.
 set directory=~/.vim/Backups,.
 
-"Set cursor shape (xterm)
-let &t_SI = "\<Esc>[6 q"
-let &t_SR = "\<Esc>[4 q"
-let &t_EI = "\<Esc>[2 q"
+"Set cursor shape (xterm on Linux only)
+if has("unix")
+  let &t_SI = "\<Esc>[6 q"
+  let &t_SR = "\<Esc>[4 q"
+  let &t_EI = "\<Esc>[2 q"
+endif
 
 "Indent setting
 set autoindent
