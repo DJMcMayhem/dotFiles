@@ -124,4 +124,7 @@ fi
 
 #Aliases
 alias v="python /home/jmhjr/Programming/V/main.py "
+alias :q="echo 'This is not vim ye daft idiot!' && sleep 2 && exit"
+
 export NVIM_LISTEN_ADDRESS=/tmp/nvim
+
