@@ -3,9 +3,15 @@ syntax on
 set backspace=2
 set number
 set ruler
-set incsearch
 set showmode
 set showcmd
+
+"Search settings
+set incsearch
+set hlsearch
+nnoremap <leader>/ :set hls!<cr>
+inoremap <leader>/ <C-o>:set hls!<cr>
+vnoremap <leader>/ <esc>:set hls!<cr>gv
 
 "Rather than failing a command, ask for confirmation
 set confirm
@@ -35,12 +41,13 @@ set shiftwidth=4
 nnoremap <space> za
 
 "For quick commenting and uncommenting
-let @c='0i//j' 
+let @a='//'
+let @c='0"aPj' 
 let @d='^xxj'
 
-"For quick indenting and unindenting
-let @t='I    j'    
-let @u='0xxxxj'
+"Train myself to use vim's already awesome indenting feature.
+let @t=':echo "Use >, not @t!"'    
+let @u=':echo "Use <, not @u!"'    
 
 "So that I don't have to hit esc
 inoremap jk 
