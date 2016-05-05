@@ -6,6 +6,10 @@ set ruler
 set showmode
 set showcmd
 
+"Filetype plugin
+filetype plugin on
+set filetype+=plugin
+
 "Search settings
 set incsearch
 set hlsearch
@@ -44,6 +48,9 @@ nnoremap <space> za
 let @a='//'
 let @c='0"aPj' 
 let @d='^xxj'
+
+"Visual commenting
+vnoremap # :norm 0i<C-r>=Comment<CR><CR>
 
 "Train myself to use vim's already awesome indenting feature.
 let @t=':echo "Use >, not @t!"'    
@@ -114,6 +121,7 @@ inoremap     "_dd
 "s/\( *\)\([a-z]\)\( *\)/\3\2\1/    "Moves the space on one side of a letter to the other side of that letter.
 "s/ \([0-9]\|[A-F]\)/ 0x\1/g        "Replaces 00-FF with 0x00-0xFF
 "s/^\(.*\)\(\n\1\)\+/\1             "removes all consecutive duplicates from the file.
+"%s/\v( *\/\/.*)telnet/\1modbus/g   "Replaces 'telnet' with 'modbus' but only in comments.
 
 "Fun macros:
 "qqfca[0]lyT(f"r'la' || pa == 'f"r'jj0@qq
