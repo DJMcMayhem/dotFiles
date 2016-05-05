@@ -6,6 +6,12 @@ set ruler
 set showmode
 set showcmd
 
+"Move vim-runtime-path if we're on windows. This helps me keep all my files in
+"the same place.
+if has("win32")
+  exe 'set rtp+=' . expand('$HOME/.vim/after')
+end
+
 "Filetype plugin
 filetype plugin on
 set filetype+=plugin
