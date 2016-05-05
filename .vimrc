@@ -57,8 +57,8 @@ vnoremap # :norm 0i<C-r>=Comment<CR><CR>
 vnoremap & :norm ^<C-r>=len(Comment)<CR>x<CR>
 
 "Train myself to use vim's already awesome indenting feature.
-let @t=':echo "Use >, not @t!"'    
-let @u=':echo "Use <, not @u!"'    
+let @t=':echo "Use >, not @t!"'    
+let @u=':echo "Use <, not @u!"'    
 
 "So that I don't have to hit esc
 inoremap jk 
