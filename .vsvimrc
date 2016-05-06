@@ -1,5 +1,6 @@
 "Load all of my settings
 source ~\.vimrc
 
-"Change my 'unindent' macro to a single x, because vsvim likes tabs.
-let @u="0xj"
+"For quick commenting and uncommenting
+let @c='0i//j'
+let @d='^xxj'

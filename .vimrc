@@ -50,11 +50,6 @@ set shiftwidth=4
 "Fold settings
 nnoremap <space> za
 
-"For quick commenting and uncommenting
-let @a='//'
-let @c='0"aPj' 
-let @d='^xxj'
-
 "Visual commenting
 " 'Comment' is a variable that will be loaded from ftplugin, but if this is a new buffer, it won't have a filetype, so default it to '//'
 let Comment='//'
@@ -63,8 +58,8 @@ vnoremap # :norm 0i<C-r>=Comment<CR><CR>
 vnoremap & :norm ^<C-r>=len(Comment)<CR>x<CR>
 
 "Train myself to use vim's already awesome indenting feature.
-let @t=':echo "Use >, not @t!"'    
-let @u=':echo "Use <, not @u!"'    
+let @t=':echo "Use >, not @t!"'    
+let @u=':echo "Use <, not @u!"'    
 
 "So that I don't have to hit esc
 inoremap jk 
