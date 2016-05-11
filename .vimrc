@@ -63,19 +63,24 @@ set smarttab
 set tabstop=4
 set shiftwidth=4
 
+"Train myself to use vim's already awesome indenting feature.
+let @t=':echo "Use >, not @t!"'    
+let @u=':echo "Use <, not @u!"'    
+
+"Make it easier to indent a visual selection several times.
+vnoremap > >gv
+vnoremap < <gv
+
 "Fold settings
 nnoremap <space> za
 
 "Visual commenting
-" 'Comment' is a variable that will be loaded from ftplugin, but if this is a new buffer, it won't have a filetype, so default it to '//'
-let Comment='//'
+" 'Comment' is a variable that will be loaded from ftplugin, but if this is a 
+" new buffer, it won't have a filetype, so default it to '#'
+let Comment='#'
 
 vnoremap # :norm 0i<C-r>=Comment<CR><CR>
 vnoremap & :norm ^<C-r>=len(Comment)<CR>x<CR>
-
-"Train myself to use vim's already awesome indenting feature.
-let @t=':echo "Use >, not @t!"'    
-let @u=':echo "Use <, not @u!"'    
 
 "So that I don't have to hit esc
 inoremap jk 
@@ -135,14 +140,6 @@ nnoremap <C-I> Bi
 nnoremap     "_d
 vnoremap     "_d
 inoremap     "_dd
-
-"My favorite regexes:
-"\<\d*\.\d*e-\d*                    "Matches all numbers in scientific notation
-"%s/\v([a-z])([A-Z])/\1_\l\2/gc     "Replaces 'camelCase' with 'snake_case' Thanks @muru and @Peter Rincker: http://vi.stackexchange.com/a/7026/2920
-"s/\( *\)\([a-z]\)\( *\)/\3\2\1/    "Moves the space on one side of a letter to the other side of that letter.
-"s/ \([0-9]\|[A-F]\)/ 0x\1/g        "Replaces 00-FF with 0x00-0xFF
-"s/^\(.*\)\(\n\1\)\+/\1             "removes all consecutive duplicates from the file.
-"%s/\v( *\/\/.*)telnet/\1modbus/g   "Replaces 'telnet' with 'modbus' but only in comments.
 
 "Fun macros:
 "qqfca[0]lyT(f"r'la' || pa == 'f"r'jj0@qq
