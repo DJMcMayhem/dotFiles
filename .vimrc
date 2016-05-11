@@ -1,3 +1,15 @@
+"Detect OS
+if has("unix")
+  let s:uname = system("uname -s")
+  if s:uname == "Darwin\n"
+    let s:OS = "OSX"
+  else
+    let s:OS = "linux"
+  endif
+else
+  let s:OS = "windows"
+endif
+
 "Sanity options
 syntax on
 set backspace=2
@@ -8,13 +20,17 @@ set showcmd
 
 "Move vim-runtime-path if we're on windows. This helps me keep all my files in
 "the same place.
-if has("win32")
+if s:OS == "windows"
   exe 'set rtp+=' . expand('$HOME/.vim/after')
 end
 
 "Filetype plugin
 filetype plugin on
 set filetype+=plugin
+
+"We must manually detect 'v' files, since verilog files also have a 'v'
+"extension.
+au BufRead,BufNewFile *.v   set filetype=v
 
 "Search settings
 set incsearch
@@ -34,7 +50,7 @@ set backupdir=~/.vim/Backups,.
 set directory=~/.vim/Backups,.
 
 "Set cursor shape (xterm on Linux only)
-if has("unix")
+if s:OS == "linux"
   let &t_SI = "\<Esc>[6 q"
   let &t_SR = "\<Esc>[4 q"
   let &t_EI = "\<Esc>[2 q"
