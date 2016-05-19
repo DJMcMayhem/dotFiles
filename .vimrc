@@ -17,6 +17,7 @@ set number
 set ruler
 set showmode
 set showcmd
+set guioptions=
 
 "Show trailing spaces
 set listchars=trail:-
