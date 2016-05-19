@@ -12,7 +12,7 @@
 set $mod Mod4
 
 bindsym $mod+control+l exec "/usr/bin/i3lock -c 000000"
-exec "feh --bg-scale ~/background.jpg"
+exec "~/set_background"
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
