@@ -66,6 +66,9 @@ set smarttab
 set tabstop=4
 set shiftwidth=4
 
+"Shortcut to retab, since I use it really often.
+nnoremap <leader>= :retab<cr>
+
 "Train myself to use vim's already awesome indenting feature.
 let @t=':echo "Use >, not @t!"'    
 let @u=':echo "Use <, not @u!"'    
