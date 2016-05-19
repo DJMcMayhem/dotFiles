@@ -18,6 +18,10 @@ set ruler
 set showmode
 set showcmd
 
+"Show trailing spaces
+set listchars=trail:-
+set list
+
 "Move vim-runtime-path if we're on windows. This helps me keep all my files in
 "the same place.
 if s:OS == "windows"
@@ -52,7 +56,6 @@ set directory=~/.vim/Backups,.
 "Set cursor shape (xterm on Linux only)
 if s:OS == "linux"
   let &t_SI = "\<Esc>[6 q"
-  let &t_SR = "\<Esc>[4 q"
   let &t_EI = "\<Esc>[2 q"
 endif
 
