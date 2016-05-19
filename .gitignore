@@ -2,7 +2,6 @@
 /*
 
 #Whitelist some folders
-
 !.gitignore
 !.README.md
 !.vimrc
