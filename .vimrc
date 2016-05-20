@@ -18,6 +18,7 @@ set ruler
 set showmode
 set showcmd
 set guioptions=
+set autoread
 
 "Show trailing spaces
 set listchars=trail:-
@@ -31,6 +32,7 @@ end
 
 "Filetype plugin
 filetype plugin on
+runtime macros/matchit.vim
 set filetype+=plugin
 
 "We must manually detect 'v' files, since verilog files also have a 'v'
