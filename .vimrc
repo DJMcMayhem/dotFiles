@@ -17,6 +17,8 @@ set number
 set ruler
 set showmode
 set showcmd
+set guioptions=
+set autoread
 
 "Show trailing spaces
 set listchars=trail:-
@@ -30,6 +32,7 @@ end
 
 "Filetype plugin
 filetype plugin on
+runtime macros/matchit.vim
 set filetype+=plugin
 
 "We must manually detect 'v' files, since verilog files also have a 'v'
@@ -66,9 +69,12 @@ set smarttab
 set tabstop=4
 set shiftwidth=4
 
+"Shortcut to retab, since I use it really often.
+nnoremap <leader>= :retab<cr>
+
 "Train myself to use vim's already awesome indenting feature.
-let @t=':echo "Use >, not @t!"'    
-let @u=':echo "Use <, not @u!"'    
+let @t=':echo "Use >, not @t!"'
+let @u=':echo "Use <, not @u!"'
 
 "Make it easier to indent a visual selection several times.
 vnoremap > >gv
@@ -78,7 +84,7 @@ vnoremap < <gv
 nnoremap <space> za
 
 "Visual commenting
-" 'Comment' is a variable that will be loaded from ftplugin, but if this is a 
+" 'Comment' is a variable that will be loaded from ftplugin, but if this is a
 " new buffer, it won't have a filetype, so default it to '#'
 let Comment='#'
 
@@ -106,18 +112,18 @@ nnoremap <C-j> <C-w>j
 
 "Wrap options
 set wrap
-set linebreak 
+set linebreak
 set display+=lastline
 
 "Make basic movements work better with wrapped lines
 nnoremap j gj
-nnoremap gj j 
+nnoremap gj j
 nnoremap k gk
-nnoremap gk k 
+nnoremap gk k
 nnoremap $ g$
-nnoremap g$ $ 
+nnoremap g$ $
 nnoremap 0 g0
-nnoremap g0 0 
+nnoremap g0 0
 
 "Make backspace delete in normal
 nnoremap <BS>    <BS>x
@@ -127,7 +133,7 @@ vnoremap <BS>    x
 nnoremap N Nzz
 nnoremap n nzz
 
-"Make vim behave like a traditional editor
+"Make vim behave (slightly more) like a traditional editor
 inoremap  :w<cr>
 nnoremap  :w<cr>
 inoremap  u
@@ -135,6 +141,8 @@ inoremap  u
 set selectmode+=mouse
 snoremap <C-v> "+y
 snoremap <C-x> "+d
+
+vnoremap <C-c> "+y
 
 nnoremap <C-i> bi
 nnoremap <C-I> Bi
@@ -182,3 +190,16 @@ endfunction
 command! -nargs=+ GrepBufs call GrepBuffers(<q-args>)
 
 cnoreabbrev GB GrepBufs
+
+"Execute a motion on the "next" text object
+"Thanks https://gist.github.com/AndrewRadev/1171559#file-next_motion_mapping-vim
+onoremap an :<c-u>call <SID>NextTextObject('a')<cr>
+xnoremap an :<c-u>call <SID>NextTextObject('a')<cr>
+onoremap in :<c-u>call <SID>NextTextObject('i')<cr>
+xnoremap in :<c-u>call <SID>NextTextObject('i')<cr>
+
+function! s:NextTextObject(motion)
+  echo
+  let c = nr2char(getchar())
+  exe "normal! f".c."v".a:motion.c
+endfunction
