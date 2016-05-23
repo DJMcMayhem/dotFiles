@@ -28,6 +28,7 @@ set list
 "the same place.
 if s:OS == "windows"
   exe 'set rtp+=' . expand('$HOME/.vim/after')
+  exe 'set rtp+=' . expand('$HOME/.vim')
 end
 
 "Filetype plugin
