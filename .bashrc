@@ -128,3 +128,8 @@ alias :q="echo 'This is not vim ye daft idiot!' && sleep 2 && exit"
 
 export NVIM_LISTEN_ADDRESS=/tmp/nvim
 
+mkcd()
+{
+    mkdir $1
+    cd $1
+}
