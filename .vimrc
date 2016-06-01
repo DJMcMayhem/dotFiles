@@ -160,8 +160,16 @@ inoremap     "_dd
 hi visual term=reverse cterm=reverse guibg=darkGray
 
 "ex commands
-cnoreabbrev rc ~\.vimrc
+cnoreabbrev rc ~/.vimrc
 cnoreabbrev et tabedit
+cnoreabbrev bo browse old
+
+function! s:TabBrowseOld()
+  tabedit
+  browse old
+endfunction
+com! Ebo call s:TabBrowseOld()
+cnoreabbrev ebo Ebo
 
 "Scripts
 function! s:DiffWithSaved()
