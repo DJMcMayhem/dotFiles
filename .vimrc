@@ -43,9 +43,6 @@ au BufRead,BufNewFile *.v   set filetype=v
 "Search settings
 set incsearch
 set hlsearch
-nnoremap <leader>/ :set hls!<cr>
-inoremap <leader>/ <C-o>:set hls!<cr>
-vnoremap <leader>/ <esc>:set hls!<cr>gv
 
 "Rather than failing a command, ask for confirmation
 set confirm
@@ -63,15 +60,29 @@ if s:OS == "linux"
   let &t_EI = "\<Esc>[2 q"
 endif
 
-"Indent setting
+"Indent settings
 set autoindent
 set expandtab
 set smarttab
 set tabstop=4
 set shiftwidth=4
 
-"Shortcut to retab, since I use it really often.
+"Indenting annoyance: Sometimes I want to delete a single backspace instead of
+"4. alt+BS will do that
+inoremap <M-BS> <C-o>dh
+inoremap <C-BS> <C-o>vbd
+
+"Shortcut to commands I use frequently
+nnoremap <leader>/ :set hls!<cr>
+inoremap <leader>/ <C-o>:set hls!<cr>
+vnoremap <leader>/ <esc>:set hls!<cr>gv
+
 nnoremap <leader>= :retab<cr>
+inoremap <leader>= <C-o>:retab<cr>
+vnoremap <leader>= <esc>:retab<cr>gv
+
+nnoremap <leader>b :Ebo<cr>
+nnoremap <leader>o :bo<cr>
 
 "Train myself to use vim's already awesome indenting feature.
 let @t=':echo "Use >, not @t!"'
