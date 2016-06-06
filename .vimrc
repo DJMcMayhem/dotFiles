@@ -19,6 +19,7 @@ set showmode
 set showcmd
 set guioptions=
 set autoread
+set autochdir
 
 "Show trailing spaces
 set listchars=trail:-
@@ -66,9 +67,6 @@ set expandtab
 set tabstop=4
 set shiftwidth=4
 
-"Indenting annoyance: Sometimes I want to delete a single backspace instead of
-"4
-
 "Shortcut to commands I use frequently
 nnoremap <leader>/ :set hls!<cr>
 inoremap <leader>/ <C-o>:set hls!<cr>
@@ -80,6 +78,7 @@ vnoremap <leader>= <esc>:retab<cr>gv
 
 nnoremap <leader>b :Ebo<cr>
 nnoremap <leader>o :browse old<cr>
+nnoremap <leader><space> :%s/ \+$<cr>
 
 "Train myself to use vim's already awesome indenting feature.
 let @t=':echo "Use >, not @t!"'
