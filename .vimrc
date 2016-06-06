@@ -1,4 +1,4 @@
-"Detect OS
+"Detect O
 if has("unix")
   let s:uname = system("uname -s")
   if s:uname == "Darwin\n"
@@ -63,14 +63,11 @@ endif
 "Indent settings
 set autoindent
 set expandtab
-set smarttab
 set tabstop=4
 set shiftwidth=4
 
 "Indenting annoyance: Sometimes I want to delete a single backspace instead of
-"4. alt+BS will do that
-inoremap <M-BS> <C-o>dh
-inoremap <C-BS> <C-o>vbd
+"4
 
 "Shortcut to commands I use frequently
 nnoremap <leader>/ :set hls!<cr>
@@ -82,7 +79,7 @@ inoremap <leader>= <C-o>:retab<cr>
 vnoremap <leader>= <esc>:retab<cr>gv
 
 nnoremap <leader>b :Ebo<cr>
-nnoremap <leader>o :bo<cr>
+nnoremap <leader>o :browse old<cr>
 
 "Train myself to use vim's already awesome indenting feature.
 let @t=':echo "Use >, not @t!"'
@@ -211,7 +208,7 @@ command! -nargs=+ GrepBufs call GrepBuffers(<q-args>)
 
 cnoreabbrev GB GrepBufs
 
-"Execute a motion on the "next" text object
+"Execute a motion on the 'next' text object
 "Thanks https://gist.github.com/AndrewRadev/1171559#file-next_motion_mapping-vim
 onoremap an :<c-u>call <SID>NextTextObject('a')<cr>
 xnoremap an :<c-u>call <SID>NextTextObject('a')<cr>
