@@ -10,6 +10,13 @@ else
   let s:OS = "windows"
 endif
 
+"Move vim-runtime-path if we're on windows. This helps me keep all my files in
+"the same place.
+if s:OS == "windows"
+  exe 'set rtp+=' . expand('$HOME/.vim/after')
+  exe 'set rtp+=' . expand('$HOME/.vim')
+end
+
 "Sanity options
 syntax on
 set backspace=2
@@ -21,16 +28,12 @@ set guioptions=
 set autoread
 set autochdir
 
+"Colorscheme
+colorscheme gotham
+
 "Show trailing spaces
 set listchars=trail:-
 set list
-
-"Move vim-runtime-path if we're on windows. This helps me keep all my files in
-"the same place.
-if s:OS == "windows"
-  exe 'set rtp+=' . expand('$HOME/.vim/after')
-  exe 'set rtp+=' . expand('$HOME/.vim')
-end
 
 "Filetype plugin
 filetype plugin on
