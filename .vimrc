@@ -35,14 +35,23 @@ if has("gui")
 "  colorscheme apprentice
 end
 
-"Show trailing spaces
-set listchars=trail:-
-set list
+"Plugins
+call plug#begin()
+
+Plug 'tpope/vim-abolish'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-repeat'
+
+call plug#end()
 
 "Filetype plugin
 filetype plugin on
 runtime macros/matchit.vim
 set filetype+=plugin
+
+"Show trailing spaces
+set listchars=trail:-
+set list
 
 "We must manually detect 'v' files, since verilog files also have a 'v'
 "extension.
