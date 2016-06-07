@@ -29,7 +29,12 @@ set autoread
 set autochdir
 
 "Colorscheme
-colorscheme gotham
+if has("gui")
+  colorscheme gotham
+"else
+"  colorscheme apprentice
+end
+
 
 "Show trailing spaces
 set listchars=trail:-
