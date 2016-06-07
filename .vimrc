@@ -35,7 +35,6 @@ if has("gui")
 "  colorscheme apprentice
 end
 
-
 "Show trailing spaces
 set listchars=trail:-
 set list
@@ -78,23 +77,25 @@ set shiftwidth=4
 "Shortcut to commands I use frequently
 nnoremap <leader>/ :set hls!<cr>
 inoremap <leader>/ <C-o>:set hls!<cr>
-vnoremap <leader>/ <esc>:set hls!<cr>gv
+xnoremap <leader>/ <esc>:set hls!<cr>gv
 
 nnoremap <leader>= :retab<cr>
 inoremap <leader>= <C-o>:retab<cr>
-vnoremap <leader>= <esc>:retab<cr>gv
+xnoremap <leader>= <esc>:retab<cr>gv
 
 nnoremap <leader>b :Ebo<cr>
 nnoremap <leader>o :browse old<cr>
 nnoremap <leader><space> :%s/ \+$<cr>
+
+xnoremap v ggoG$
 
 "Train myself to use vim's already awesome indenting feature.
 let @t=':echo "Use >, not @t!"'
 let @u=':echo "Use <, not @u!"'
 
 "Make it easier to indent a visual selection several times.
-vnoremap > >gv
-vnoremap < <gv
+xnoremap > >gv
+xnoremap < <gv
 
 "Fold settings
 nnoremap <space> za
@@ -104,8 +105,8 @@ nnoremap <space> za
 " new buffer, it won't have a filetype, so default it to '#'
 let Comment='#'
 
-vnoremap # :norm 0i<C-r>=Comment<CR><CR>
-vnoremap & :norm ^<C-r>=len(Comment)<CR>x<CR>
+xnoremap # :norm 0i<C-r>=Comment<CR><CR>
+xnoremap & :norm ^<C-r>=len(Comment)<CR>x<CR>
 
 "So that I don't have to hit esc
 inoremap jk 
@@ -143,7 +144,7 @@ nnoremap g0 0
 
 "Make backspace delete in normal
 nnoremap <BS>    <BS>x
-vnoremap <BS>    x
+xnoremap <BS>    x
 
 "Center view on the search result
 nnoremap N Nzz
@@ -158,14 +159,14 @@ set selectmode+=mouse
 snoremap <C-v> "+y
 snoremap <C-x> "+d
 
-vnoremap <C-c> "+y
+xnoremap <C-c> "+y
 
 nnoremap <C-i> bi
 nnoremap <C-I> Bi
 
 "Black hole shortcut
 nnoremap     "_d
-vnoremap     "_d
+xnoremap     "_d
 inoremap     "_dd
 
 "Fun macros:
