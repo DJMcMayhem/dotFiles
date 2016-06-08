@@ -41,6 +41,7 @@ call plug#begin()
 Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
+Plug 'haya14busa/incsearch.vim'
 
 call plug#end()
 
