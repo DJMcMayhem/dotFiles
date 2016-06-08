@@ -62,6 +62,11 @@ au BufRead,BufNewFile *.v   set filetype=v
 set incsearch
 set hlsearch
 
+map / <Plug>(incsearch-forward)
+map ? <Plug>(incsearch-backward)
+map g/ <Plug>(incsearch-stay)
+
+
 "Rather than failing a command, ask for confirmation
 set confirm
 
