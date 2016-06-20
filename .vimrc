@@ -1,4 +1,4 @@
-"Detect OS
+"Detect O
 if has("unix")
   let s:uname = system("uname -s")
   if s:uname == "Darwin\n"
@@ -10,6 +10,13 @@ else
   let s:OS = "windows"
 endif
 
+"Move vim-runtime-path if we're on windows. This helps me keep all my files in
+"the same place.
+if s:OS == "windows"
+  exe 'set rtp+=' . expand('$HOME/.vim/after')
+  exe 'set rtp+=' . expand('$HOME/.vim')
+end
+
 "Sanity options
 syntax on
 set backspace=2
@@ -19,22 +26,33 @@ set showmode
 set showcmd
 set guioptions=
 set autoread
+set autochdir
 
-"Show trailing spaces
-set listchars=trail:-
-set list
-
-"Move vim-runtime-path if we're on windows. This helps me keep all my files in
-"the same place.
-if s:OS == "windows"
-  exe 'set rtp+=' . expand('$HOME/.vim/after')
-  exe 'set rtp+=' . expand('$HOME/.vim')
+"Colorscheme
+if has("gui")
+  colorscheme gotham
+"else
+"  colorscheme apprentice
 end
+
+"Plugins
+call plug#begin()
+
+Plug 'tpope/vim-abolish'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-repeat'
+Plug 'haya14busa/incsearch.vim'
+
+call plug#end()
 
 "Filetype plugin
 filetype plugin on
 runtime macros/matchit.vim
 set filetype+=plugin
+
+"Show trailing spaces
+set listchars=trail:-
+set list
 
 "We must manually detect 'v' files, since verilog files also have a 'v'
 "extension.
@@ -43,9 +61,11 @@ au BufRead,BufNewFile *.v   set filetype=v
 "Search settings
 set incsearch
 set hlsearch
-nnoremap <leader>/ :set hls!<cr>
-inoremap <leader>/ <C-o>:set hls!<cr>
-vnoremap <leader>/ <esc>:set hls!<cr>gv
+
+map / <Plug>(incsearch-forward)
+map ? <Plug>(incsearch-backward)
+map g/ <Plug>(incsearch-stay)
+
 
 "Rather than failing a command, ask for confirmation
 set confirm
@@ -63,23 +83,34 @@ if s:OS == "linux"
   let &t_EI = "\<Esc>[2 q"
 endif
 
-"Indent setting
+"Indent settings
 set autoindent
 set expandtab
-set smarttab
 set tabstop=4
 set shiftwidth=4
 
-"Shortcut to retab, since I use it really often.
+"Shortcut to commands I use frequently
+nnoremap <leader>/ :set hls!<cr>
+inoremap <leader>/ <C-o>:set hls!<cr>
+xnoremap <leader>/ <esc>:set hls!<cr>gv
+
 nnoremap <leader>= :retab<cr>
+inoremap <leader>= <C-o>:retab<cr>
+xnoremap <leader>= <esc>:retab<cr>gv
+
+nnoremap <leader>b :Ebo<cr>
+nnoremap <leader>o :browse old<cr>
+nnoremap <leader><space> :%s/ \+$<cr>
+
+xnoremap v ggoG$
 
 "Train myself to use vim's already awesome indenting feature.
 let @t=':echo "Use >, not @t!"'
 let @u=':echo "Use <, not @u!"'
 
 "Make it easier to indent a visual selection several times.
-vnoremap > >gv
-vnoremap < <gv
+xnoremap > >gv
+xnoremap < <gv
 
 "Fold settings
 nnoremap <space> za
@@ -89,8 +120,8 @@ nnoremap <space> za
 " new buffer, it won't have a filetype, so default it to '#'
 let Comment='#'
 
-vnoremap # :norm 0i<C-r>=Comment<CR><CR>
-vnoremap & :norm ^<C-r>=len(Comment)<CR>x<CR>
+xnoremap # :norm 0i<C-r>=Comment<CR><CR>
+xnoremap & :norm ^<C-r>=len(Comment)<CR>x<CR>
 
 "So that I don't have to hit esc
 inoremap jk 
@@ -128,7 +159,7 @@ nnoremap g0 0
 
 "Make backspace delete in normal
 nnoremap <BS>    <BS>x
-vnoremap <BS>    x
+xnoremap <BS>    x
 
 "Center view on the search result
 nnoremap N Nzz
@@ -143,14 +174,14 @@ set selectmode+=mouse
 snoremap <C-v> "+y
 snoremap <C-x> "+d
 
-vnoremap <C-c> "+y
+xnoremap <C-c> "+y
 
 nnoremap <C-i> bi
 nnoremap <C-I> Bi
 
 "Black hole shortcut
 nnoremap     "_d
-vnoremap     "_d
+xnoremap     "_d
 inoremap     "_dd
 
 "Fun macros:
@@ -160,8 +191,16 @@ inoremap     "_dd
 hi visual term=reverse cterm=reverse guibg=darkGray
 
 "ex commands
-cnoreabbrev rc ~\.vimrc
+cnoreabbrev rc ~/.vimrc
 cnoreabbrev et tabedit
+cnoreabbrev bo browse old
+
+function! s:TabBrowseOld()
+  tabedit
+  browse old
+endfunction
+com! Ebo call s:TabBrowseOld()
+cnoreabbrev ebo Ebo
 
 "Scripts
 function! s:DiffWithSaved()
@@ -192,7 +231,7 @@ command! -nargs=+ GrepBufs call GrepBuffers(<q-args>)
 
 cnoreabbrev GB GrepBufs
 
-"Execute a motion on the "next" text object
+"Execute a motion on the 'next' text object
 "Thanks https://gist.github.com/AndrewRadev/1171559#file-next_motion_mapping-vim
 onoremap an :<c-u>call <SID>NextTextObject('a')<cr>
 xnoremap an :<c-u>call <SID>NextTextObject('a')<cr>
