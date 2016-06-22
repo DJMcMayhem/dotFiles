@@ -98,10 +98,16 @@ nnoremap <leader>= :retab<cr>
 inoremap <leader>= <C-o>:retab<cr>
 xnoremap <leader>= <esc>:retab<cr>gv
 
+"Mnemonic '(S)trip trailing spaces'
+nnoremap <leader>s :%s/\s\+$<cr>
+inoremap <leader>s <C-o>:%s/\s\+$<cr>
+xnoremap <leader>s <esc>:%s/\s\+$<cr>gv
+
+"Mnemonic '(B)rowse'
 nnoremap <leader>b :Ebo<cr>
 nnoremap <leader>o :browse old<cr>
-nnoremap <leader><space> :%s/ \+$<cr>
 
+"Select everything with 'vv'
 xnoremap v ggoG$
 
 "Train myself to use vim's already awesome indenting feature.
