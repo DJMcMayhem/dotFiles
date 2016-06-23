@@ -10,6 +10,15 @@ else
   let s:OS = "windows"
 endif
 
+"Did we open an empty vim? If so, change our working directory to 'HOME'
+function! ChangeDirHome()
+  if eval("@%") == ""
+    cd $HOME
+  endif
+endfunction
+autocmd VimEnter * call ChangeDirHome()
+
+
 "Move vim-runtime-path if we're on windows. This helps me keep all my files in
 "the same place.
 if s:OS == "windows"
