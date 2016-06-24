@@ -1,4 +1,3 @@
-"This is just a test.
 "Detect O
 if has("unix")
   let s:uname = system("uname -s")
