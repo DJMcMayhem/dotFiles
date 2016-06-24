@@ -10,6 +10,15 @@ else
   let s:OS = "windows"
 endif
 
+"Did we open an empty vim? If so, change our working directory to 'HOME'
+function! ChangeDirHome()
+  if eval("@%") == ""
+    cd $HOME
+  endif
+endfunction
+autocmd VimEnter * call ChangeDirHome()
+
+
 "Move vim-runtime-path if we're on windows. This helps me keep all my files in
 "the same place.
 if s:OS == "windows"
@@ -98,10 +107,16 @@ nnoremap <leader>= :retab<cr>
 inoremap <leader>= <C-o>:retab<cr>
 xnoremap <leader>= <esc>:retab<cr>gv
 
+"Mnemonic '(S)trip trailing spaces'
+nnoremap <leader>s :%s/\s\+$<cr>
+inoremap <leader>s <C-o>:%s/\s\+$<cr>
+xnoremap <leader>s <esc>:%s/\s\+$<cr>gv
+
+"Mnemonic '(B)rowse'
 nnoremap <leader>b :Ebo<cr>
 nnoremap <leader>o :browse old<cr>
-nnoremap <leader><space> :%s/ \+$<cr>
 
+"Select everything with 'vv'
 xnoremap v ggoG$
 
 "Train myself to use vim's already awesome indenting feature.
