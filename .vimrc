@@ -45,14 +45,16 @@ if has("gui")
 end
 
 "Plugins
-call plug#begin()
+if has("nvim") == 0
+  call plug#begin()
 
-Plug 'tpope/vim-abolish'
-Plug 'tpope/vim-surround'
-Plug 'tpope/vim-repeat'
-Plug 'haya14busa/incsearch.vim'
+  Plug 'tpope/vim-abolish'
+  Plug 'tpope/vim-surround'
+  Plug 'tpope/vim-repeat'
+  Plug 'haya14busa/incsearch.vim'
 
-call plug#end()
+  call plug#end()
+endif
 
 "Filetype plugin
 filetype plugin on
