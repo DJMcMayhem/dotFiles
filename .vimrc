@@ -100,19 +100,18 @@ set expandtab
 set tabstop=4
 set shiftwidth=4
 
+inoremap <expr> <C-BS> "\<C-o>d".&tabstop."h"
+nnoremap <expr> <C-BS> "d".&tabstop."h"
+
 "Shortcut to commands I use frequently
 nnoremap <leader>/ :set hls!<cr>
-inoremap <leader>/ <C-o>:set hls!<cr>
-xnoremap <leader>/ <esc>:set hls!<cr>gv
-
 nnoremap <leader>= :retab<cr>
-inoremap <leader>= <C-o>:retab<cr>
-xnoremap <leader>= <esc>:retab<cr>gv
 
 "Mnemonic '(S)trip trailing spaces'
 nnoremap <leader>s :%s/\s\+$<cr>
-inoremap <leader>s <C-o>:%s/\s\+$<cr>
-xnoremap <leader>s <esc>:%s/\s\+$<cr>gv
+
+"Mnemonic '(D)os to unix'
+nnoremap <leader>d :%s/<C-v><cr>$<cr>
 
 "Mnemonic '(B)rowse'
 nnoremap <leader>b :Ebo<cr>
@@ -137,8 +136,8 @@ nnoremap <space> za
 " new buffer, it won't have a filetype, so default it to '#'
 let Comment='#'
 
-xnoremap # :norm 0i<C-r>=Comment<CR><CR>
-xnoremap & :norm ^<C-r>=len(Comment)<CR>x<CR>
+xnoremap # :norm 0i<C-r>=Comment<cr><cr>
+xnoremap & :norm ^<C-r>=len(Comment)<cr>x<cr>
 
 "So that I don't have to hit esc
 inoremap jk 
