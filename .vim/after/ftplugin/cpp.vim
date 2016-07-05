@@ -1,3 +1,3 @@
 let Comment='//'
 
-inoremap {<CR> {<CR>}<esc>O<tab>
+inoremap {<CR> {<CR>}<esc>O

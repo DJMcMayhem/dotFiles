@@ -1,3 +1,3 @@
 let Comment='#'
 
-inoremap :<CR> :<CR><tab>
+"inoremap :<CR> :<CR><tab>
