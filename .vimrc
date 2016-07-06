@@ -18,7 +18,6 @@ function! ChangeDirHome()
 endfunction
 autocmd VimEnter * call ChangeDirHome()
 
-
 "Move vim-runtime-path if we're on windows. This helps me keep all my files in
 "the same place.
 if s:OS == "windows"
@@ -28,6 +27,8 @@ end
 
 "Sanity options
 syntax on
+set encoding=utf-8
+set fileencoding=utf-8
 set backspace=2
 set number
 set ruler
@@ -101,8 +102,8 @@ set expandtab
 set tabstop=4
 set shiftwidth=4
 
-inoremap <expr> <C-BS> "\<C-o>d".&tabstop."h"
-nnoremap <expr> <C-BS> "d".&tabstop."h"
+inoremap <expr> <C-BS> repeat("\<Left>", &tabstop)."\<C-o>".&tabstop."x"
+nnoremap <expr> <C-BS> repeat("\<Left>", &tabstop).&tabstop."x"
 
 "Shortcut to commands I use frequently
 nnoremap <leader>/ :set hls!<cr>
