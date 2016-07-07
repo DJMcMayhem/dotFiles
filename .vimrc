@@ -79,7 +79,6 @@ map / <Plug>(incsearch-forward)
 map ? <Plug>(incsearch-backward)
 map g/ <Plug>(incsearch-stay)
 
-
 "Rather than failing a command, ask for confirmation
 set confirm
 
@@ -95,15 +94,6 @@ if s:OS == "linux"
   let &t_SI = "\<Esc>[6 q"
   let &t_EI = "\<Esc>[2 q"
 endif
-
-"Indent settings
-set autoindent
-set expandtab
-set tabstop=4
-set shiftwidth=4
-
-inoremap <expr> <C-BS> repeat("\<Left>", &tabstop)."\<C-o>".&tabstop."x"
-nnoremap <expr> <C-BS> repeat("\<Left>", &tabstop).&tabstop."x"
 
 "Shortcut to commands I use frequently
 nnoremap <leader>/ :set hls!<cr>
@@ -146,15 +136,15 @@ inoremap jk 
 inoremap kj 
 
 "So I can move around in insert
-inoremap <C-k> gk
+inoremap <C-k> <C-o>gk
 inoremap <C-h> <Left>
 inoremap <C-l> <Right>
-inoremap <C-j> gj
+inoremap <C-j> <C-o>gj
 
 "Make working with multiple buffers less of a pain
 set splitright
 set splitbelow
-nnoremap v :vnew<cr>
+nnoremap <C-w>v :vnew<cr>
 nnoremap <C-k> <C-w>k
 nnoremap <C-h> <C-w>h
 nnoremap <C-l> <C-w>l
@@ -184,13 +174,13 @@ nnoremap N Nzz
 nnoremap n nzz
 
 "Make vim behave (slightly more) like a traditional editor
-inoremap  :w<cr>
-nnoremap  :w<cr>
-inoremap  u
+inoremap <C-s> <C-o>:w<cr>
+nnoremap <C-s> :w<cr>
+inoremap <C-z> <C-o>u
 
 set selectmode+=mouse
-snoremap <C-v> "+y
-snoremap <C-x> "+d
+snoremap <C-v> <C-o>"+y
+snoremap <C-x> <C-o>"+d
 
 xnoremap <C-c> "+y
 
@@ -198,9 +188,9 @@ nnoremap <C-i> bi
 nnoremap <C-I> Bi
 
 "Black hole shortcut
-nnoremap     "_d
-xnoremap     "_d
-inoremap     "_dd
+nnoremap <C-d> "_d
+xnoremap <C-d> "_d
+inoremap <C-d> <C-o>"_dd
 
 "Fun macros:
 "qqfca[0]lyT(f"r'la' || pa == 'f"r'jj0@qq
@@ -212,6 +202,34 @@ hi visual term=reverse cterm=reverse guibg=darkGray
 cnoreabbrev rc ~/.vimrc
 cnoreabbrev et tabedit
 cnoreabbrev bo browse old
+
+function! s:TabMode()
+  let g:IndentMode = "Tabs"
+  set noexpandtab
+  exec "set listchars+=tab:\\ \\ "
+
+  inoremap <C-BS> <BS>
+  nnoremap <C-BS> <BS>
+endfunction
+
+function! s:SpaceMode()
+  let g:IndentMode = "Spaces"
+  set autoindent
+  set expandtab
+  set tabstop=4
+  set shiftwidth=4
+
+  inoremap <expr> <C-BS> repeat("\<Left>", &tabstop)."\<C-o>".&tabstop."x"
+  nnoremap <expr> <C-BS> repeat("\<Left>", &tabstop).&tabstop."x"
+
+  exec "set listchars-=tab:\\ \\ "
+endfunction
+
+call s:SpaceMode()
+
+com! Spaces call s:SpaceMode()
+com! Tabs call s:TabMode()
+nnoremap <leader>i :echo g:IndentMode<CR>
 
 function! s:TabBrowseOld()
   tabedit
