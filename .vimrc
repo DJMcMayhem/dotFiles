@@ -55,6 +55,8 @@ if has("nvim") == 0
   Plug 'tpope/vim-characterize'
   Plug 'tpope/vim-endwise'
   Plug 'haya14busa/incsearch.vim'
+  Plug 'ntpeters/vim-better-whitespace'
+  Plug 'mattn/gist-vim'
 
   call plug#end()
 endif
@@ -63,10 +65,6 @@ endif
 filetype plugin on
 runtime macros/matchit.vim
 set filetype+=plugin
-
-"Show trailing spaces
-set listchars=trail:-
-set list
 
 "We must manually detect 'v' files, since verilog files also have a 'v'
 "extension.
