@@ -53,6 +53,7 @@ if has("nvim") == 0
   Plug 'tpope/vim-surround'
   Plug 'tpope/vim-repeat'
   Plug 'tpope/vim-characterize'
+  Plug 'tpope/vim-endwise'
   Plug 'haya14busa/incsearch.vim'
 
   call plug#end()
