@@ -54,6 +54,7 @@ if has("nvim") == 0
   Plug 'tpope/vim-repeat'
   Plug 'tpope/vim-characterize'
   Plug 'tpope/vim-endwise'
+  Plug 'tpope/vim-speeddating'
   Plug 'haya14busa/incsearch.vim'
   Plug 'ntpeters/vim-better-whitespace'
   Plug 'mattn/gist-vim'
