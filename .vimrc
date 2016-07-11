@@ -71,9 +71,15 @@ set list
 "extension.
 au BufRead,BufNewFile *.v   set filetype=v
 
-"Search settings
-set incsearch
+" :h g:incsearch#auto_nohlsearch
 set hlsearch
+let g:incsearch#auto_nohlsearch = 1
+map n  <Plug>(incsearch-nohl-n)zz
+map N  <Plug>(incsearch-nohl-N)zz
+map *  <Plug>(incsearch-nohl-*)zz
+map #  <Plug>(incsearch-nohl-#)zz
+map g* <Plug>(incsearch-nohl-g*)zz
+map g# <Plug>(incsearch-nohl-g#)zz
 
 map / <Plug>(incsearch-forward)
 map ? <Plug>(incsearch-backward)
@@ -169,9 +175,9 @@ nnoremap g0 0
 nnoremap <BS>    <BS>x
 xnoremap <BS>    x
 
-"Center view on the search result
-nnoremap N Nzz
-nnoremap n nzz
+""Center view on the search result
+"nnoremap N Nzz
+"nnoremap n nzz
 
 "Make vim behave (slightly more) like a traditional editor
 inoremap <C-s> <C-o>:w<cr>
