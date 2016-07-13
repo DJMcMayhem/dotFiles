@@ -58,6 +58,7 @@ if has("nvim") == 0
   Plug 'haya14busa/incsearch.vim'
   Plug 'ntpeters/vim-better-whitespace'
   Plug 'mattn/gist-vim'
+  Plug 'tommcdo/vim-exchange'
 
   call plug#end()
 endif
