@@ -60,6 +60,7 @@ if has("nvim") == 0
   Plug 'mattn/gist-vim'
   Plug 'tommcdo/vim-exchange'
   Plug 'wellle/targets.vim'
+  Plug 'matze/vim-move'
 
   call plug#end()
 endif
