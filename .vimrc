@@ -59,6 +59,7 @@ if has("nvim") == 0
   Plug 'ntpeters/vim-better-whitespace'
   Plug 'mattn/gist-vim'
   Plug 'tommcdo/vim-exchange'
+  Plug 'wellle/targets.vim'
 
   call plug#end()
 endif
@@ -273,16 +274,3 @@ endfunction
 command! -nargs=+ GrepBufs call GrepBuffers(<q-args>)
 
 cnoreabbrev GB GrepBufs
-
-"Execute a motion on the 'next' text object
-"Thanks https://gist.github.com/AndrewRadev/1171559#file-next_motion_mapping-vim
-onoremap an :<c-u>call <SID>NextTextObject('a')<cr>
-xnoremap an :<c-u>call <SID>NextTextObject('a')<cr>
-onoremap in :<c-u>call <SID>NextTextObject('i')<cr>
-xnoremap in :<c-u>call <SID>NextTextObject('i')<cr>
-
-function! s:NextTextObject(motion)
-  echo
-  let c = nr2char(getchar())
-  exe "normal! f".c."v".a:motion.c
-endfunction
