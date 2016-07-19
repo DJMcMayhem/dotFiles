@@ -46,13 +46,14 @@ if has("gui")
 end
 
 "Plugins
-if has("nvim") == 0
+"if exists('g:loaded_plug')
+if exists('g:vsvim') == 0 && exists('nvim') == 0
   call plug#begin()
 
   Plug 'tpope/vim-abolish'
   Plug 'tpope/vim-surround'
   Plug 'tpope/vim-repeat'
-  Plug 'tpope/vim-characterize'
+  Plug 'DJMcMayhem/vim-characterize'
   Plug 'tpope/vim-endwise'
   Plug 'tpope/vim-speeddating'
   Plug 'haya14busa/incsearch.vim'

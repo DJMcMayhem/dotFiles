@@ -1,4 +1,5 @@
 "Load all of my settings
+let g:vsvim = 0
 source ~\.vimrc
 
 "For quick commenting and uncommenting
