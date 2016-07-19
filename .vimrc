@@ -56,14 +56,34 @@ if exists('g:vsvim') == 0 && exists('nvim') == 0
   Plug 'DJMcMayhem/vim-characterize'
   Plug 'tpope/vim-endwise'
   Plug 'tpope/vim-speeddating'
-  Plug 'haya14busa/incsearch.vim'
   Plug 'ntpeters/vim-better-whitespace'
   Plug 'mattn/gist-vim'
   Plug 'tommcdo/vim-exchange'
   Plug 'wellle/targets.vim'
   Plug 'matze/vim-move'
 
+  Plug 'haya14busa/incsearch.vim'
+  set hlsearch
+  let g:incsearch#auto_nohlsearch = 1
+  map n  <Plug>(incsearch-nohl-n)zz
+  map N  <Plug>(incsearch-nohl-N)zz
+  map *  <Plug>(incsearch-nohl-*)zz
+  map #  <Plug>(incsearch-nohl-#)zz
+  map g* <Plug>(incsearch-nohl-g*)zz
+  map g# <Plug>(incsearch-nohl-g#)zz
+
+  map / <Plug>(incsearch-forward)
+  map ? <Plug>(incsearch-backward)
+  map g/ <Plug>(incsearch-stay)
+
   call plug#end()
+else
+  "For whatever reason, vim-plug isn't installed.
+  "Load some basic settings.
+  set hlsearch
+  set incsearch
+  nnoremap n nzz
+  nnoremap N Nzz
 endif
 
 "Filetype plugin
@@ -74,20 +94,6 @@ set filetype+=plugin
 "We must manually detect 'v' files, since verilog files also have a 'v'
 "extension.
 au BufRead,BufNewFile *.v   set filetype=v
-
-" :h g:incsearch#auto_nohlsearch
-set hlsearch
-let g:incsearch#auto_nohlsearch = 1
-map n  <Plug>(incsearch-nohl-n)zz
-map N  <Plug>(incsearch-nohl-N)zz
-map *  <Plug>(incsearch-nohl-*)zz
-map #  <Plug>(incsearch-nohl-#)zz
-map g* <Plug>(incsearch-nohl-g*)zz
-map g# <Plug>(incsearch-nohl-g#)zz
-
-map / <Plug>(incsearch-forward)
-map ? <Plug>(incsearch-backward)
-map g/ <Plug>(incsearch-stay)
 
 "Rather than failing a command, ask for confirmation
 set confirm
