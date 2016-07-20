@@ -5,3 +5,14 @@ source ~\.vimrc
 "For quick commenting and uncommenting
 let @c='0i//j'
 let @d='^xxj'
+
+"Undo plugin specific mappings
+unmap n
+unmap N
+unmap *
+unmap #
+unmap g*
+unmap g#
+unmap /
+unmap ?
+unmap g/
