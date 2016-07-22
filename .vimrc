@@ -38,22 +38,16 @@ set guioptions=
 set autoread
 set autochdir
 
-"Colorscheme
-if has("gui")
-  colorscheme gotham
-"else
-"  colorscheme apprentice
-end
-
 "Plugins
 "if exists('g:loaded_plug')
 if exists('g:vsvim') == 0 && exists('nvim') == 0
   call plug#begin()
 
+  command PU PlugUpgrade | PlugInstall | PlugUpdate | q
+
   Plug 'tpope/vim-abolish'
   Plug 'tpope/vim-surround'
   Plug 'tpope/vim-repeat'
-  Plug 'DJMcMayhem/vim-characterize'
   Plug 'tpope/vim-endwise'
   Plug 'tpope/vim-speeddating'
   Plug 'ntpeters/vim-better-whitespace'
@@ -61,6 +55,9 @@ if exists('g:vsvim') == 0 && exists('nvim') == 0
   Plug 'tommcdo/vim-exchange'
   Plug 'wellle/targets.vim'
   Plug 'matze/vim-move'
+
+  Plug 'flazz/vim-colorschemes'
+  let g:loaded_colorschemes = 1
 
   Plug 'haya14busa/incsearch.vim'
   set hlsearch
@@ -72,9 +69,12 @@ if exists('g:vsvim') == 0 && exists('nvim') == 0
   map g* <Plug>(incsearch-nohl-g*)zz
   map g# <Plug>(incsearch-nohl-g#)zz
 
-  map / <Plug>(incsearch-forward)
-  map ? <Plug>(incsearch-backward)
-  map g/ <Plug>(incsearch-stay)
+  map / <Plug>(incsearch-forward)\v
+  map ? <Plug>(incsearch-backward)\v
+  map g/ <Plug>(incsearch-stay)\v
+
+  "Plugins I don't want anymore
+  "Plug 'DJMcMayhem/vim-characterize'
 
   call plug#end()
 else
@@ -85,6 +85,12 @@ else
   nnoremap n nzz
   nnoremap N Nzz
 endif
+
+if has("gui") && g:loaded_colorschemes
+  colorscheme gotham
+end
+
+hi Search ctermfg=NONE ctermbg=NONE cterm=underline guifg=NONE guibg=NONE gui=underline
 
 "Filetype plugin
 filetype plugin on
@@ -218,6 +224,7 @@ hi visual term=reverse cterm=reverse guibg=darkGray
 cnoreabbrev rc ~/.vimrc
 cnoreabbrev et tabedit
 cnoreabbrev bo browse old
+cnoreabbrev cs colorscheme
 
 function! s:TabMode()
   let g:IndentMode = "Tabs"
