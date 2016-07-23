@@ -37,6 +37,9 @@ set showcmd
 set guioptions=
 set autoread
 set autochdir
+set noerrorbells
+set visualbell
+set t_vb=
 
 "Plugins
 "if exists('g:loaded_plug')
