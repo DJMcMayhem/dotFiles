@@ -41,6 +41,8 @@ set noerrorbells
 set visualbell
 set t_vb=
 
+autocmd GUIEnter * set t_vb=
+
 "Plugins
 "if exists('g:loaded_plug')
 if exists('g:vsvim') == 0 && exists('nvim') == 0
