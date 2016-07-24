@@ -91,8 +91,10 @@ else
   nnoremap N Nzz
 endif
 
-if has("gui") && g:loaded_colorschemes
+if has("gui_running") && g:loaded_colorschemes
   colorscheme gotham
+else
+  colorscheme candycode
 end
 
 hi Search ctermfg=NONE ctermbg=NONE cterm=underline guifg=NONE guibg=NONE gui=underline
