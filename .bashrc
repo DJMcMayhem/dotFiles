@@ -128,6 +128,10 @@ alias :q="echo 'This is not vim ye daft idiot!' && sleep 2 && exit"
 
 export NVIM_LISTEN_ADDRESS=/tmp/nvim
 
+if [ -n "$DISPLAY" -a "$TERM" == "xterm" ]; then
+    export TERM=xterm-256color
+fi
+
 mkcd()
 {
     mkdir $1
