@@ -16,3 +16,6 @@ unmap g#
 unmap /
 unmap ?
 unmap g/
+
+"Keep indent level with 'cc'
+nnoremap cc $v^c

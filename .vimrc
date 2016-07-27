@@ -48,7 +48,9 @@ autocmd GUIEnter * set t_vb=
 if exists('g:vsvim') == 0 && exists('nvim') == 0
   call plug#begin()
 
-  command PU PlugUpgrade | PlugInstall | PlugUpdate | q
+  command PU PlugUpgrade | PlugInstall | PlugClean | PlugUpdate | q
+  command PI PlugInstall | q
+  command PC PlugClean | q
 
   Plug 'tpope/vim-abolish'
   Plug 'tpope/vim-surround'
@@ -60,6 +62,7 @@ if exists('g:vsvim') == 0 && exists('nvim') == 0
   Plug 'tommcdo/vim-exchange'
   Plug 'wellle/targets.vim'
   Plug 'matze/vim-move'
+  Plug 'ararslan/license-to-vim'
 
   Plug 'flazz/vim-colorschemes'
   let g:loaded_colorschemes = 1
