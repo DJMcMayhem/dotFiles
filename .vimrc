@@ -127,6 +127,9 @@ if s:OS == "linux"
   let &t_EI = "\<Esc>[2 q"
 endif
 
+"Set leader to space
+let mapleader=" "
+
 "Shortcut to commands I use frequently
 nnoremap <leader>/ :set hls!<cr>
 nnoremap <leader>= :retab<cr>
@@ -141,8 +144,13 @@ nnoremap <leader>d :%s/<C-v><cr>$<cr>
 nnoremap <leader>b :Ebo<cr>
 nnoremap <leader>o :browse old<cr>
 
-"Select everything with 'vv'
-xnoremap v ggoG$
+"Useful for code-golf explanations
+nnoremap <leader>j m`Yp<C-o>v$hhr jhv0r ^
+nnoremap <leader>J m`Yp<C-o>v$r jhv0r ^
+
+"Select entire line (minus EOL) with 'vv', entire file (characterwise) with 'VV'
+xnoremap v 0v$h
+xnoremap V ggvG$h
 
 "Train myself to use vim's already awesome indenting feature.
 let @t=':echo "Use >, not @t!"'
