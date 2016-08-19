@@ -149,8 +149,8 @@ nnoremap <leader>j m`Yp<C-o>v$hhr jhv0r ^
 nnoremap <leader>J m`Yp<C-o>v$r jhv0r ^
 
 "Select entire line (minus EOL) with 'vv', entire file (characterwise) with 'VV'
-xnoremap v 0v$h
-xnoremap V ggvG$h
+nnoremap vv 0v$h
+nnoremap VV ggv$G$h
 
 "Train myself to use vim's already awesome indenting feature.
 let @t=':echo "Use >, not @t!"'
