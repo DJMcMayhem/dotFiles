@@ -48,9 +48,9 @@ autocmd GUIEnter * set t_vb=
 if exists('g:vsvim') == 0 && exists('nvim') == 0
   call plug#begin()
 
-  command PU PlugUpgrade | PlugInstall | PlugClean | PlugUpdate | q
-  command PI PlugInstall | q
-  command PC PlugClean | q
+  command! PU PlugUpgrade | PlugInstall | PlugClean | PlugUpdate | q
+  command! PI PlugInstall | q
+  command! PC PlugClean | q
 
   Plug 'tpope/vim-abolish'
   Plug 'tpope/vim-surround'
@@ -105,13 +105,12 @@ hi Search ctermfg=NONE ctermbg=NONE cterm=underline guifg=NONE guibg=NONE gui=un
 "Filetype plugin
 filetype plugin on
 runtime macros/matchit.vim
-set filetype+=plugin
 
 "We must manually detect 'v' files, since verilog files also have a 'v'
 "extension.
 au BufRead,BufNewFile *.v   set filetype=v
 
-"Rather than failing a command, ask for confirmation
+"Rather than failing a command!, ask for confirmation
 set confirm
 
 "In gvim, don't open a dialog box when asking for confirmation
@@ -130,7 +129,7 @@ endif
 "Set leader to space
 let mapleader=" "
 
-"Shortcut to commands I use frequently
+"Shortcut to command!s I use frequently
 nnoremap <leader>/ :set hls!<cr>
 nnoremap <leader>= :retab<cr>
 
@@ -241,7 +240,7 @@ inoremap <C-d> <C-o>"_dd
 "Make visual selection more visible
 hi visual term=reverse cterm=reverse guibg=darkGray
 
-"ex commands
+"ex command!s
 cnoreabbrev rc ~/.vimrc
 cnoreabbrev et tabedit
 cnoreabbrev bo browse old
