@@ -150,6 +150,10 @@ nnoremap <leader>o :browse old<cr>
 nnoremap <leader>j m`Yp<C-o>v$hhr jhv0r ^
 nnoremap <leader>J m`Yp<C-o>v$r jhv0r ^
 
+"Duplicate up/down
+nnoremap <leader>dk m`YPVr <C-o>y$kP
+nnoremap <leader>dj m`YpVr <C-o>y$jP
+
 "Select entire line (minus EOL) with 'vv', entire file (characterwise) with 'VV'
 xnoremap <expr> V mode() ==# "V" ? "ggvoG$h" : "V"
 xnoremap <expr> v mode() ==# "v" ? "0o$h" : "v"
