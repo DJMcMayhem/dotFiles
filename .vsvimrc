@@ -17,5 +17,12 @@ unmap /
 unmap ?
 unmap g/
 
+"<expr> mappings do not work, instead jumping to the command line.
+"Unmap em'
+nunmap vv
+nunmap VV
+xunmap v
+xunmap V
+
 "Keep indent level with 'cc'
 nnoremap cc $v^c
