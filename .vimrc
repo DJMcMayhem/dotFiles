@@ -57,7 +57,6 @@ if exists('g:vsvim') == 0 && exists('nvim') == 0
   Plug 'tpope/vim-repeat'
   Plug 'tpope/vim-endwise'
   Plug 'tpope/vim-speeddating'
-  Plug 'ntpeters/vim-better-whitespace'
   Plug 'mattn/gist-vim'
   Plug 'tommcdo/vim-exchange'
   Plug 'wellle/targets.vim'
@@ -83,6 +82,7 @@ if exists('g:vsvim') == 0 && exists('nvim') == 0
 
   "Plugins I don't want anymore
   "Plug 'DJMcMayhem/vim-characterize'
+  "Plug 'ntpeters/vim-better-whitespace'
 
   call plug#end()
 else
@@ -93,6 +93,9 @@ else
   nnoremap n nzz
   nnoremap N Nzz
 endif
+
+set ignorecase
+set smartcase
 
 if has("gui_running") && g:loaded_colorschemes
   colorscheme gotham
