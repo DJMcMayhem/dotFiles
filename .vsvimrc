@@ -26,3 +26,13 @@ xunmap V
 
 "Keep indent level with 'cc'
 nnoremap cc $v^c
+
+"The .vsvim parses doesn't handle function calls, so we have to do these
+"manually
+set autoindent
+set expandtab
+set tabstop=4
+set shiftwidth=4
+
+exec "set listchars-=tab:\\ \\ "
+
