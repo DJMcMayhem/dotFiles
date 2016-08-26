@@ -18,12 +18,31 @@ function! ChangeDirHome()
 endfunction
 autocmd VimEnter * call ChangeDirHome()
 
-"Move vim-runtime-path if we're on windows. This helps me keep all my files in
-"the same place.
+"Windows specific settings
 if s:OS == "windows"
+  "Move vim-runtime-path if we're on windows. This helps me keep all my files in
+  "the same place.
   exe 'set rtp+=' . expand('$HOME/.vim/after')
   exe 'set rtp+=' . expand('$HOME/.vim')
-end
+
+  inoremap <C-s> <C-o>:w<cr>
+  nnoremap <C-s> :w<cr>
+endif
+
+"Gui specific settings (TODO: test on linux!)
+if has("gui_running")
+  function! ToggleFullscreen()
+    if &lines < 26 || &columns < 80
+      "TODO: Check for linux version
+      simalt ~x
+    else
+      set lines=25 columns=80
+    endif
+    redraw
+  endfunction
+  nnoremap <C-z> :call ToggleFullscreen()<cr>
+  inoremap <C-z> <C-o>:call ToggleFullscreen()<cr>
+endif
 
 "Sanity options
 syntax on
@@ -154,6 +173,10 @@ nnoremap <leader>J m`Yp<C-o>v$r jhv0r ^
 nnoremap <leader>dk m`YPVr <C-o>y$kP
 nnoremap <leader>dj m`YpVr <C-o>y$jP
 
+"Cnext, cprev
+nnoremap <leader>n :cnext<cr>
+nnoremap <leader>p :cprev<cr>
+
 "Select entire line (minus EOL) with 'vv', entire file (characterwise) with 'VV'
 xnoremap <expr> V mode() ==# "V" ? "ggvoG$h" : "V"
 xnoremap <expr> v mode() ==# "v" ? "0o$h" : "v"
@@ -223,18 +246,11 @@ xnoremap <BS>    x
 "nnoremap n nzz
 
 "Make vim behave (slightly more) like a traditional editor
-inoremap <C-s> <C-o>:w<cr>
-nnoremap <C-s> :w<cr>
-inoremap <C-z> <C-o>u
-
 set selectmode+=mouse
 snoremap <C-v> <C-o>"+y
 snoremap <C-x> <C-o>"+d
 
 xnoremap <C-c> "+y
-
-nnoremap <C-i> bi
-nnoremap <C-I> Bi
 
 "Black hole shortcut
 nnoremap <C-d> "_d
