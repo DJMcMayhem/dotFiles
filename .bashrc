@@ -137,3 +137,5 @@ mkcd()
     mkdir $1
     cd $1
 }
+
+alias nethack="ssh nethack@nethack.alt.org"
