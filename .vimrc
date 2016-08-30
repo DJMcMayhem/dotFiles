@@ -179,7 +179,7 @@ nnoremap <leader>n :cnext<cr>
 nnoremap <leader>p :cprev<cr>
 
 "Select entire line (minus EOL) with 'vv', entire file (characterwise) with 'VV'
-xnoremap <expr> V mode() ==# "V" ? "ggvoG$h" : "V"
+xnoremap <expr> V mode() ==# "V" ? "gg0voG$h" : "V"
 xnoremap <expr> v mode() ==# "v" ? "0o$h" : "v"
 
 "Train myself to use vim's already awesome indenting feature.
