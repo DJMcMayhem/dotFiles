@@ -77,6 +77,7 @@ if exists('g:vsvim') == 0 && exists('nvim') == 0
   Plug 'tpope/vim-endwise'
   Plug 'tpope/vim-speeddating'
   Plug 'mattn/gist-vim'
+  Plug 'mattn/webapi-vim'
   Plug 'tommcdo/vim-exchange'
   Plug 'wellle/targets.vim'
   Plug 'matze/vim-move'
