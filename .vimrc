@@ -257,7 +257,6 @@ xnoremap <C-c> "+y
 "Black hole shortcut
 nnoremap <C-d> "_d
 xnoremap <C-d> "_d
-inoremap <C-d> <C-o>"_dd
 
 "Fun macros:
 "qqfca[0]lyT(f"r'la' || pa == 'f"r'jj0@qq
