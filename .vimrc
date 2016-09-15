@@ -16,7 +16,7 @@ function! ChangeDirHome()
     cd $HOME
   endif
 endfunction
-autocmd BufEnter * call ChangeDirHome()
+autocmd VimEnter * call ChangeDirHome()
 
 "Windows specific settings
 if s:OS == "windows"
