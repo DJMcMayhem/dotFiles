@@ -6,6 +6,8 @@ source ~\.vimrc
 let @c='0i//j'
 let @d='^xxj'
 
+nnoremap <leader>/ /$^<cr>
+
 "Undo plugin specific mappings
 unmap n
 unmap N

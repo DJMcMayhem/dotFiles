@@ -172,12 +172,16 @@ nnoremap <leader>j m`Yp<C-o>v$hhr jhv0r ^
 nnoremap <leader>J m`Yp<C-o>v$r jhv0r ^
 
 "Duplicate up/down
+"Granted, kindof a silly mapping, but why not ¯\_(ツ)_/¯?
 nnoremap <leader>dk m`YPVr <C-o>y$kP
 nnoremap <leader>dj m`YpVr <C-o>y$jP
 
 "Cnext, cprev
 nnoremap <leader>n :cnext<cr>
 nnoremap <leader>p :cprev<cr>
+
+"Faster buffer switchingt
+nnoremap <leader>l :ls<cr>:b<space>
 
 "Select entire line (minus EOL) with 'vv', entire file (characterwise) with 'VV'
 xnoremap <expr> V mode() ==# "V" ? "gg0voG$h" : "V"
