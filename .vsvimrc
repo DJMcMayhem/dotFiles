@@ -6,7 +6,8 @@ source ~\.vimrc
 let @c='0i//j'
 let @d='^xxj'
 
-nnoremap <leader>/ /$^<cr>
+"highlight search looks hideous in vsvim
+set nohlsearch
 
 "Undo plugin specific mappings
 unmap n
