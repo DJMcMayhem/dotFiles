@@ -183,6 +183,21 @@ nnoremap <leader>p :cprev<cr>
 "Faster buffer switchingt
 nnoremap <leader>l :ls<cr>:b<space>
 
+"Faster clipboard copying/pasting
+nnoremap <leader>y "+y
+nnoremap <leader>Y "+Y
+xnoremap <leader>y "+y
+xnoremap <leader>Y "+Y
+
+nnoremap <leader>p "+p
+nnoremap <leader>P "+P
+xnoremap <leader>p "+p
+xnoremap <leader>P "+P
+
+"(E)xpand (convert a function template into a function definition)
+nnoremap <leader>e :s/;$/\r{\r    \r}\r<cr>
+xnoremap <leader>e :s/;$/\r{\r    \r}\r<cr>
+
 "Select entire line (minus EOL) with 'vv', entire file (characterwise) with 'VV'
 xnoremap <expr> V mode() ==# "V" ? "gg0voG$h" : "V"
 xnoremap <expr> v mode() ==# "v" ? "0o$h" : "v"
@@ -247,6 +262,8 @@ nnoremap g0 0
 nnoremap <BS>    <BS>x
 xnoremap <BS>    x
 
+inoremap <C-BS> <C-w>
+
 ""Center view on the search result
 "nnoremap N Nzz
 "nnoremap n nzz
@@ -279,8 +296,6 @@ function! s:TabMode()
   set noexpandtab
   exec "set listchars+=tab:\\ \\ "
 
-  inoremap <C-BS> <BS>
-  nnoremap <C-BS> <BS>
 endfunction
 
 function! s:SpaceMode()
@@ -289,9 +304,6 @@ function! s:SpaceMode()
   set expandtab
   set tabstop=4
   set shiftwidth=4
-
-  inoremap <expr> <C-BS> repeat("\<Left>", &tabstop)."\<C-o>".&tabstop."x"
-  nnoremap <expr> <C-BS> repeat("\<Left>", &tabstop).&tabstop."x"
 
   exec "set listchars-=tab:\\ \\ "
 endfunction
