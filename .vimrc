@@ -51,11 +51,14 @@ set fileencoding=utf-8
 set backspace=2
 set number
 set ruler
+set wildmenu
 set showmode
 set showcmd
 set guioptions=
 set autoread
 set autochdir
+set matchpairs+=<:>
+
 set noerrorbells
 set visualbell
 set t_vb=
