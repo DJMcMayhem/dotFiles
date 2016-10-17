@@ -197,6 +197,10 @@ nnoremap <leader>P "+P
 xnoremap <leader>p "+p
 xnoremap <leader>P "+P
 
+nnoremap <leader>t :tabedit<space>
+
+nnoremap <leader>q :q<cr>
+
 "(E)xpand (convert a function template into a function definition)
 nnoremap <leader>e :s/;$/\r{\r    \r}\r<cr>
 xnoremap <leader>e :s/;$/\r{\r    \r}\r<cr>
@@ -214,7 +218,7 @@ xnoremap > >gv
 xnoremap < <gv
 
 "Fold settings
-nnoremap <space> za
+nnoremap <leader>f za
 
 "Visual commenting
 " 'Comment' is a variable that will be loaded from ftplugin, but if this is a
