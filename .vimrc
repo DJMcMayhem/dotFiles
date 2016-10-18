@@ -90,6 +90,8 @@ if exists('g:vsvim') == 0 && exists('nvim') == 0
   Plug 'flazz/vim-colorschemes'
   let g:loaded_colorschemes = 1
 
+  Plug 'kshenoy/vim-signature'
+
   Plug 'haya14busa/incsearch.vim'
   set hlsearch
   let g:incsearch#auto_nohlsearch = 1
