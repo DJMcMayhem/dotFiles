@@ -221,6 +221,7 @@ xnoremap < <gv
 
 "Fold settings
 nnoremap <leader>f za
+nnoremap <leader>F [[za
 
 "Visual commenting
 " 'Comment' is a variable that will be loaded from ftplugin, but if this is a
