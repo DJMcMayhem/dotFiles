@@ -203,6 +203,9 @@ nnoremap <leader>t :tabedit<space>
 
 nnoremap <leader>q :q<cr>
 
+"See help options faster
+nnoremap <leader>k yi':se <C-r>"?<cr>
+
 "(E)xpand (convert a function template into a function definition)
 nnoremap <leader>e :s/;$/\r{\r    \r}\r<cr>
 xnoremap <leader>e :s/;$/\r{\r    \r}\r<cr>
@@ -274,9 +277,8 @@ xnoremap <BS>    x
 
 inoremap <C-BS> <C-w>
 
-""Center view on the search result
-"nnoremap N Nzz
-"nnoremap n nzz
+"Get rid of pesky "ex mode"
+nnoremap Q <nop>
 
 "Make vim behave (slightly more) like a traditional editor
 set selectmode+=mouse
