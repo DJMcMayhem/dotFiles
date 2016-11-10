@@ -210,6 +210,8 @@ nnoremap <leader>k yi':se <C-r>"?<cr>
 nnoremap <leader>e :s/;$/\r{\r    \r}\r<cr>
 xnoremap <leader>e :s/;$/\r{\r    \r}\r<cr>
 
+nnoremap <leader>r *:%s/<C-r>///g<left><left>
+
 "Select entire line (minus EOL) with 'vv', entire file (characterwise) with 'VV'
 xnoremap <expr> V mode() ==# "V" ? "gg0voG$h" : "V"
 xnoremap <expr> v mode() ==# "v" ? "0o$h" : "v"
