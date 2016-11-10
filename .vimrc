@@ -165,9 +165,6 @@ nnoremap <leader>= :retab<cr>
 "Mnemonic '(S)trip trailing spaces'
 nnoremap <leader>s :%s/\s\+$<cr>
 
-"Mnemonic '(D)os to unix'
-nnoremap <leader>d :%s/<C-v><cr>$<cr>
-
 "Mnemonic '(B)rowse'
 nnoremap <leader>b :Ebo<cr>
 nnoremap <leader>o :browse old<cr>
