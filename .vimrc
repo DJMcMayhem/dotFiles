@@ -265,8 +265,6 @@ nnoremap j gj
 nnoremap gj j
 nnoremap k gk
 nnoremap gk k
-nnoremap $ g$
-nnoremap g$ $
 nnoremap 0 g0
 nnoremap g0 0
 
