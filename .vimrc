@@ -124,7 +124,7 @@ set ignorecase
 set smartcase
 
 if has("gui_running") && g:loaded_colorschemes
-  colorscheme gotham
+  colorscheme badwolf
 else
   colorscheme candycode
 end
