@@ -30,6 +30,9 @@ xunmap V
 "Keep indent level with 'cc'
 nnoremap cc $v^c
 
+"Fix the <leader>r mapping, since you can't map to `c_<Left>` in vsvim
+nnoremap <leader>r *:%s/<C-r>///g<left><left>
+
 "The .vsvim parses doesn't handle function calls, so we have to do these
 "manually
 set autoindent
@@ -38,4 +41,3 @@ set tabstop=4
 set shiftwidth=4
 
 exec "set listchars-=tab:\\ \\ "
-
