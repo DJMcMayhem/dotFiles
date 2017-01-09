@@ -139,3 +139,7 @@ mkcd()
 }
 
 alias nethack="ssh nethack@nethack.alt.org"
+
+if [ "$PWD" == "/" ]; then
+    cd ~
+fi
