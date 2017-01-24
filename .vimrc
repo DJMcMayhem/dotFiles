@@ -191,10 +191,13 @@ nnoremap <leader>Y "+Y
 xnoremap <leader>y "+y
 xnoremap <leader>Y "+Y
 
+"Paste from system clipboard
 nnoremap <leader>p "+p
 nnoremap <leader>P "+P
-xnoremap <leader>p "+p
-xnoremap <leader>P "+P
+
+"Replace paste without grabbing old text into main register
+xnoremap <leader>p pgvy
+xnoremap <leader>P Pgvy
 
 nnoremap <leader>t :tabedit<space>
 
