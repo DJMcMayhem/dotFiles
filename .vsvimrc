@@ -33,6 +33,9 @@ nnoremap cc $v^c
 "Fix the <leader>r mapping, since you can't map to `c_<Left>` in vsvim
 nnoremap <leader>r *:%s/<C-r>///g<left><left>
 
+" 'vv' and 'VV' are expression mappings, so they don't work in vsvim
+nnoremap <leader>v govG$
+
 "The .vsvim parses doesn't handle function calls, so we have to do these
 "manually
 set autoindent
