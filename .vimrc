@@ -207,7 +207,17 @@ nnoremap <leader>k yi':se <C-r>"?<cr>
 nnoremap <leader>e :s/;$/\r{\r    \r}\r<cr>
 xnoremap <leader>e :s/;$/\r{\r    \r}\r<cr>
 
+"(R)eplace all
 nnoremap <leader>r *:%s/<C-r>///g<left><left>
+
+"Git mappings
+nnoremap <leader>gc :!git commit %<cr>
+nnoremap <leader>gp :!git push<cr>
+
+"Fold settings
+nnoremap <leader>f za
+nnoremap <leader>F [[za
+
 
 "Select entire line (minus EOL) with 'vv', entire file (characterwise) with 'VV'
 xnoremap <expr> V mode() ==# "V" ? "gg0voG$h" : "V"
@@ -220,10 +230,6 @@ let @u=':echo "Use <, not @u!"'
 "Make it easier to indent a visual selection several times.
 xnoremap > >gv
 xnoremap < <gv
-
-"Fold settings
-nnoremap <leader>f za
-nnoremap <leader>F [[za
 
 "Visual commenting
 " 'Comment' is a variable that will be loaded from ftplugin, but if this is a
