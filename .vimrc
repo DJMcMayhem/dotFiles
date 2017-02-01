@@ -165,8 +165,8 @@ let mapleader=" "
 nnoremap <leader>/ :set hls!<cr>
 nnoremap <leader>= :retab<cr>
 
-"Mnemonic '(S)trip trailing spaces'
-nnoremap <leader>s :%s/\s\+$<cr>
+"Save and source
+nnoremap <leader>s :w \| source %<cr>
 
 "Mnemonic '(B)rowse'
 nnoremap <leader>b :Ebo<cr>
@@ -181,10 +181,6 @@ nnoremap <leader>J m`Yp<C-o>v$r jhv0r ^
 nnoremap <leader>dk m`YPVr <C-o>y$kP
 nnoremap <leader>dj m`YpVr <C-o>y$jP
 
-"Cnext, cprev
-nnoremap <leader>n :cnext<cr>
-nnoremap <leader>p :cprev<cr>
-
 "Faster buffer switchingt
 nnoremap <leader>l :ls<cr>:b<space>
 
@@ -197,10 +193,8 @@ xnoremap <leader>Y "+Y
 "Paste from system clipboard
 nnoremap <leader>p "+p
 nnoremap <leader>P "+P
-
-"Replace paste without grabbing old text into main register
-xnoremap <leader>p pgvy
-xnoremap <leader>P Pgvy
+xnoremap <leader>p "+p
+xnoremap <leader>P "+P
 
 nnoremap <leader>t :tabedit<space>
 
@@ -282,6 +276,10 @@ inoremap <C-BS> <C-w>
 
 "Get rid of pesky "ex mode"
 nnoremap Q <nop>
+nnoremap q: <nop>
+
+"Make re-running macros more convenient (especially useful in vsvim)
+nnoremap , @@
 
 "Make vim behave (slightly more) like a traditional editor
 set selectmode+=mouse
