@@ -208,7 +208,7 @@ nnoremap <leader>e :s/;$/\r{\r    \r}\r<cr>
 xnoremap <leader>e :s/;$/\r{\r    \r}\r<cr>
 
 "(R)eplace all
-nnoremap <leader>r *:%s/<C-r>///g<left><left>
+nnoremap <leader>r yiw:%s/\<<C-r>"\>//g<left><left>
 
 "Git mappings
 nnoremap <leader>gc :!git commit %<cr>
