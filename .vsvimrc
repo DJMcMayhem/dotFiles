@@ -31,7 +31,7 @@ xunmap V
 nnoremap cc $v^c
 
 "Fix the <leader>r mapping, since you can't map to `c_<Left>` in vsvim
-nnoremap <leader>r *:%s/<C-r>///g<left><left>
+nnoremap <leader>r yiw:%s/\<<C-r>\>//g
 
 " 'vv' and 'VV' are expression mappings, so they don't work in vsvim
 nnoremap <leader>v govG$
