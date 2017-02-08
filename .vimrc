@@ -211,7 +211,7 @@ xnoremap <leader>e :s/;$/\r{\r    \r}\r<cr>
 nnoremap <leader>r yiw:%s/\<<C-r>"\>//g<left><left>
 
 "Git mappings
-nnoremap <leader>gc :!git commit %<cr>
+nnoremap <leader>gc :w \| !git commit %<cr>
 nnoremap <leader>gp :!git push<cr>
 
 "Fold settings
@@ -271,8 +271,6 @@ nnoremap j gj
 nnoremap gj j
 nnoremap k gk
 nnoremap gk k
-nnoremap 0 g0
-nnoremap g0 0
 
 "Make backspace delete in normal
 nnoremap <BS>    <BS>x
