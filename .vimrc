@@ -280,7 +280,6 @@ inoremap <C-BS> <C-w>
 
 "Get rid of pesky "ex mode"
 nnoremap Q <nop>
-nnoremap q: <nop>
 
 "Make re-running macros more convenient (especially useful in vsvim)
 nnoremap , @@
