@@ -218,6 +218,9 @@ nnoremap <leader>gp :!git push<cr>
 nnoremap <leader>f za
 nnoremap <leader>F [[za
 
+"A useful map for decoding V-weirdness
+nnoremap <leader>ga yl:echo nr2char(char2nr(getreg('"')) % 128)<cr>
+
 
 "Select entire line (minus EOL) with 'vv', entire file (characterwise) with 'VV'
 xnoremap <expr> V mode() ==# "V" ? "gg0voG$h" : "V"
