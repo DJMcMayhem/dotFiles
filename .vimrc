@@ -213,6 +213,7 @@ nnoremap <leader>r yiw:%s/\<<C-r>"\>//g<left><left>
 "Git mappings
 nnoremap <leader>gc :w \| !git commit %<cr>
 nnoremap <leader>gp :!git push<cr>
+nnoremap <leader>gP :!git pull<cr>
 
 "Fold settings
 nnoremap <leader>f za
