@@ -34,7 +34,7 @@ nnoremap cc $v^c
 nnoremap <leader>r yiw:%s/\<<C-r>"\>//g
 
 " 'vv' and 'VV' are expression mappings, so they don't work in vsvim
-nnoremap <leader>v govG$
+nnoremap <leader>v ggVG$
 
 "The .vsvim parses doesn't handle function calls, so we have to do these
 "manually
