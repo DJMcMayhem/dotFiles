@@ -33,6 +33,11 @@ nnoremap cc $v^c
 "Fix the <leader>r mapping, since you can't map to `c_<Left>` in vsvim
 nnoremap <leader>r yiw:%s/\<<C-r>"\>//g
 
+"Visual commenting relies on the 'eval register' which doesn't work in
+".vsvimrc. Default to c-style comments
+xnoremap # :norm 0i//<cr>
+xnoremap & :norm ^xx<cr>
+
 " 'vv' and 'VV' are expression mappings, so they don't work in vsvim
 nnoremap <leader>v ggVG$
 
