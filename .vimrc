@@ -171,6 +171,7 @@ nnoremap <leader>s :w \| source %<cr>
 "Mnemonic '(B)rowse'
 nnoremap <leader>b :Ebo<cr>
 nnoremap <leader>o :browse old<cr>
+nnoremap <leader>O :browse oldfiles<C-left>filter // <left><left>
 
 "Useful for code-golf explanations
 nnoremap <leader>j m`Yp<C-o>v$hhr jhv0r ^
@@ -218,6 +219,9 @@ nnoremap <leader>gP :!git pull<cr>
 "Fold settings
 nnoremap <leader>f za
 nnoremap <leader>F [[za
+
+nnoremap <leader>n :cnext<cr>:call histdel('cnext', 1)<cr>
+nnoremap <leader>N :cprev<cr>:call histdel('cnext', 1)<cr>
 
 "A useful map for decoding V-weirdness
 nnoremap <leader>ga yl:echo nr2char(char2nr(getreg('"')) % 128)<cr>
