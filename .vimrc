@@ -126,7 +126,7 @@ set smartcase
 if has("gui_running") && g:loaded_colorschemes
   colorscheme badwolf
 else
-  colorscheme candycode
+  colorscheme gotham256
 end
 
 hi Search ctermfg=NONE ctermbg=NONE cterm=underline guifg=NONE guibg=NONE gui=underline
