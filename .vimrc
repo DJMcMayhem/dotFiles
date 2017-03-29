@@ -1,4 +1,4 @@
-"Detect O
+"Detect OS
 if has("unix")
   let s:uname = system("uname -s")
   if s:uname == "Darwin\n"
@@ -139,8 +139,8 @@ runtime macros/matchit.vim
 "extension.
 au BufRead,BufNewFile *.v   set filetype=v
 
-autocmd BufEnter * :if &filetype == '' | set spell | endif
-autocmd BufEnter * :if &filetype != '' | set nospell | endif
+autocmd BufEnter,FileType * :if &filetype == '' | set spell | endif
+autocmd BufEnter,FileType * :if &filetype != '' | set nospell | endif
 
 "Rather than failing a command!, ask for confirmation
 set confirm
@@ -167,6 +167,9 @@ nnoremap <leader>= :retab<cr>
 
 "Save and source
 nnoremap <leader>s :w \| source %<cr>
+
+"Toggle 'spell'
+nnoremap <leader>S :se spell!<cr>
 
 "Mnemonic '(B)rowse'
 nnoremap <leader>b :Ebo<cr>
