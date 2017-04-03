@@ -63,6 +63,8 @@ set noerrorbells
 set visualbell
 set t_vb=
 
+set nrformats-=octal
+
 autocmd GUIEnter * set t_vb=
 
 "Plugins
