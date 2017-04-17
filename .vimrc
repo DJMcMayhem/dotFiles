@@ -131,6 +131,8 @@ else
   colorscheme gotham256
 end
 
+"Highlight search matches with an underscore (this is nice because it keeps
+"the matched text very readable still)
 hi Search ctermfg=NONE ctermbg=NONE cterm=underline guifg=NONE guibg=NONE gui=underline
 
 "Filetype plugin
@@ -171,7 +173,7 @@ nnoremap <leader>= :retab<cr>
 nnoremap <leader>s :w \| source %<cr>
 
 "Toggle 'spell'
-nnoremap <leader>S :se spell!<cr>
+nnoremap <leader>S :setlocal spell!<cr>
 
 "Mnemonic '(B)rowse'
 nnoremap <leader>b :Ebo<cr>
@@ -220,6 +222,9 @@ nnoremap <leader>r yiw:%s/\<<C-r>"\>//g<left><left>
 nnoremap <leader>gc :w \| !git commit %<cr>
 nnoremap <leader>gp :!git push<cr>
 nnoremap <leader>gP :!git pull<cr>
+
+"Search for non-ASCII
+nnoremap <leader>a /\v[^\x00-\x7f]<cr>
 
 "Fold settings
 nnoremap <leader>f za
