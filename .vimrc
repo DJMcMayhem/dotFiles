@@ -40,8 +40,8 @@ if has("gui_running")
     endif
     redraw
   endfunction
-  nnoremap <C-z> :call ToggleFullscreen()<cr>
-  inoremap <C-z> <C-o>:call ToggleFullscreen()<cr>
+  nnoremap <C-z> :call ToggleFullscreen()<cr><esc>
+  inoremap <C-z> <C-o>:call ToggleFullscreen()<cr><esc>
 endif
 
 "Sanity options
