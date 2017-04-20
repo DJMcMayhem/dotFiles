@@ -88,6 +88,7 @@ if exists('g:vsvim') == 0 && exists('nvim') == 0
   Plug 'matze/vim-move'
   Plug 'ararslan/license-to-vim'
   Plug 'vim-utils/vim-husk'
+  Plug 'nessss/vim-gml'
 
   Plug 'flazz/vim-colorschemes'
   let g:loaded_colorschemes = 1
