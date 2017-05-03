@@ -89,6 +89,8 @@ if exists('g:vsvim') == 0 && exists('nvim') == 0
   Plug 'ararslan/license-to-vim'
   Plug 'vim-utils/vim-husk'
   Plug 'nessss/vim-gml'
+  Plug 'scrooloose/nerdtree'
+  Plug 'artnez/vim-wipeout'
 
   Plug 'flazz/vim-colorschemes'
   let g:loaded_colorschemes = 1
@@ -112,6 +114,7 @@ if exists('g:vsvim') == 0 && exists('nvim') == 0
   "Plugins I don't want anymore
   "Plug 'DJMcMayhem/vim-characterize'
   "Plug 'ntpeters/vim-better-whitespace'
+
 
   call plug#end()
 else
@@ -301,7 +304,7 @@ inoremap <C-BS> <C-w>
 nnoremap Q <nop>
 
 "Make re-running macros more convenient (especially useful in vsvim)
-nnoremap , @@zz
+nnoremap , @@
 
 "Make vim behave (slightly more) like a traditional editor
 set selectmode+=mouse
