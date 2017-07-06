@@ -129,7 +129,7 @@ endif
 set ignorecase
 set smartcase
 
-if has("gui_running") && g:loaded_colorschemes
+if (has("gui_running") || g:GuiLoaded) && g:loaded_colorschemes
   colorscheme badwolf
 else
   colorscheme gotham256
@@ -211,6 +211,7 @@ xnoremap <leader>P "+P
 nnoremap <leader>t :tabedit<space>
 
 nnoremap <leader>q :q<cr>
+xnoremap <leader>q :<C-u>q<cr>
 
 "See help options faster
 nnoremap <leader>k yi':se <C-r>"?<cr>
@@ -224,6 +225,7 @@ nnoremap <leader>r yiw:%s/\<<C-r>"\>//g<left><left>
 
 "Git mappings
 nnoremap <leader>gc :w \| !git commit %<cr>
+nnoremap <leader>gd :!git diff<cr>
 nnoremap <leader>gp :!git push<cr>
 nnoremap <leader>gP :!git pull<cr>
 
