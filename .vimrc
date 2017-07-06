@@ -91,6 +91,7 @@ if exists('g:vsvim') == 0 && exists('nvim') == 0
   Plug 'nessss/vim-gml'
   Plug 'scrooloose/nerdtree'
   Plug 'artnez/vim-wipeout'
+  Plug 'JuliaEditorSupport/julia-vim'
 
   Plug 'flazz/vim-colorschemes'
   let g:loaded_colorschemes = 1
