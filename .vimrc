@@ -95,7 +95,7 @@ if exists('g:vsvim') == 0 && exists('nvim') == 0
 
   "The most beautiful colorscheme I have ever seen. This is truly a work of
   "art. Angels weep the tears of a thousand virgins everytime a new vimmer
-  "finds this coloscheme.
+  "finds this <s>colorscheme</s> work of art.
   Plug 'KeyboardFire/hotdog.vim'
 
   Plug 'flazz/vim-colorschemes'
