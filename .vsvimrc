@@ -3,8 +3,8 @@ let g:vsvim = 0
 source ~\.vimrc
 
 "For quick commenting and uncommenting
-let @c='0i//j'
-let @d='^xxj'
+let @c='0i//jzz'
+let @d='^xxjzz'
 
 "highlight search looks hideous in vsvim
 set nohlsearch
@@ -49,3 +49,5 @@ set tabstop=4
 set shiftwidth=4
 
 exec "set listchars-=tab:\\ \\ "
+
+nnoremap Q :q<cr>
