@@ -27,6 +27,9 @@ nunmap VV
 xunmap v
 xunmap V
 
+" 'vip' switches to character selection, not line selection. Fix that
+xnoremap ip ipV
+
 "Keep indent level with 'cc'
 nnoremap cc $v^c
 
