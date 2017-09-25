@@ -41,6 +41,9 @@ if has("gui_running")
   endfunction
   nnoremap <C-z> :call ToggleFullscreen()<cr><esc>
   inoremap <C-z> <C-o>:call ToggleFullscreen()<cr><esc>
+
+  "Are we running vim-diff? If so, change gvim to fullscreen
+  autocmd VimEnter * exec &diff ? "simalt ~x" : ""
 endif
 
 "Sanity options
