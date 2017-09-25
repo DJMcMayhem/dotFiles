@@ -1,4 +1,3 @@
-"Detect OS
 if has("unix")
   let s:uname = system("uname -s")
   if s:uname == "Darwin\n"
@@ -135,9 +134,10 @@ endif
 set ignorecase
 set smartcase
 
-if (has("gui_running") || g:GuiLoaded) && g:loaded_colorschemes
+if has("gui_running") && g:loaded_colorschemes
   colorscheme badwolf
-else
+elseif s:OS == "linux"
+  " Compensate for Window's abysmally shitty terminal
   colorscheme gotham256
 end
 
@@ -395,3 +395,5 @@ endfunction
 command! -nargs=+ GrepBufs call GrepBuffers(<q-args>)
 
 cnoreabbrev GB GrepBufs
+
+
