@@ -54,3 +54,6 @@ set shiftwidth=4
 exec "set listchars-=tab:\\ \\ "
 
 nnoremap Q :q<cr>
+
+xnoremap gt <esc>gt
+xnoremap gT <esc>gT
