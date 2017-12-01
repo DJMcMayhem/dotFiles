@@ -91,7 +91,6 @@ if exists('g:vsvim') == 0 && exists('nvim') == 0
   Plug 'ararslan/license-to-vim'
   Plug 'vim-utils/vim-husk'
   Plug 'nessss/vim-gml'
-  Plug 'scrooloose/nerdtree'
   Plug 'artnez/vim-wipeout'
   Plug 'JuliaEditorSupport/julia-vim'
   Plug 'sheerun/vim-polyglot'
@@ -100,6 +99,10 @@ if exists('g:vsvim') == 0 && exists('nvim') == 0
   "art. Angels weep the tears of a thousand virgins everytime a new vimmer
   "finds this <s>colorscheme</s> work of art.
   Plug 'KeyboardFire/hotdog.vim'
+
+  Plug 'scrooloose/nerdtree'
+  "Show hidden files in NERDTree
+  let NERDTreeShowHidden=1
 
   Plug 'flazz/vim-colorschemes'
   let g:loaded_colorschemes = 1
