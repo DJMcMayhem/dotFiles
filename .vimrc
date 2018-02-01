@@ -319,7 +319,7 @@ inoremap <C-BS> <C-w>
 nnoremap Q <nop>
 
 "Make re-running macros more convenient (especially useful in vsvim)
-nnoremap , @@
+nnoremap , @@zz
 
 "Make vim behave (slightly more) like a traditional editor
 set selectmode+=mouse
