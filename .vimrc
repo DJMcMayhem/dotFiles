@@ -9,7 +9,7 @@ else
   let s:OS = "windows"
 endif
 
-"Did we open an empty vim? If so, change our working directory to 'HOME'
+" Did we open an empty vim? If so, change our working directory to 'HOME'
 function! ChangeDirHome()
   if eval("@%") == ""
     cd $HOME
@@ -17,10 +17,10 @@ function! ChangeDirHome()
 endfunction
 autocmd VimEnter * call ChangeDirHome()
 
-"Windows specific settings
+" Windows specific settings
 if s:OS == "windows"
-  "Move vim-runtime-path if we're on windows. This helps me keep all my files in
-  "the same place.
+  " Move vim-runtime-path if we're on windows. This helps me keep all my files in
+  " the same place.
   exe 'set rtp+=' . expand('$HOME/.vim/after')
   exe 'set rtp+=' . expand('$HOME/.vim')
 
@@ -28,11 +28,11 @@ if s:OS == "windows"
   nnoremap <C-s> :w<cr>
 endif
 
-"Gui specific settings (TODO: test on linux!)
+" Gui specific settings (TODO: test on linux!)
 if has("gui_running")
   function! ToggleFullscreen()
     if &lines < 26 || &columns < 80
-      "TODO: Check for linux version
+      " TODO: Check for linux version
       simalt ~x
     else
       set lines=25 columns=80
@@ -42,11 +42,11 @@ if has("gui_running")
   nnoremap <C-z> :call ToggleFullscreen()<cr><esc>
   inoremap <C-z> <C-o>:call ToggleFullscreen()<cr><esc>
 
-  "Are we running vim-diff? If so, change gvim to fullscreen
+  " Are we running vim-diff? If so, change gvim to fullscreen
   autocmd VimEnter * exec &diff ? "simalt ~x" : ""
 endif
 
-"Sanity options
+" Sanity options
 syntax on
 set encoding=utf-8
 set fileencoding=utf-8
@@ -69,8 +69,8 @@ set nrformats-=octal
 
 autocmd GUIEnter * set t_vb=
 
-"Plugins
-"if exists('g:loaded_plug')
+" Plugins
+" if exists('g:loaded_plug')
 if exists('g:vsvim') == 0 && exists('nvim') == 0
   call plug#begin()
 
@@ -82,7 +82,6 @@ if exists('g:vsvim') == 0 && exists('nvim') == 0
   Plug 'tpope/vim-surround'
   Plug 'tpope/vim-repeat'
   Plug 'tpope/vim-endwise'
-  Plug 'tpope/vim-speeddating'
   Plug 'mattn/gist-vim'
   Plug 'mattn/webapi-vim'
   Plug 'tommcdo/vim-exchange'
@@ -95,13 +94,13 @@ if exists('g:vsvim') == 0 && exists('nvim') == 0
   Plug 'JuliaEditorSupport/julia-vim'
   Plug 'sheerun/vim-polyglot'
 
-  "The most beautiful colorscheme I have ever seen. This is truly a work of
-  "art. Angels weep the tears of a thousand virgins everytime a new vimmer
-  "finds this <s>colorscheme</s> work of art.
+  " The most beautiful colorscheme I have ever seen. This is truly a work of
+  " art. Angels weep the tears of a thousand virgins everytime a new vimmer
+  " finds this <s>colorscheme</s> work of art.
   Plug 'KeyboardFire/hotdog.vim'
 
   Plug 'scrooloose/nerdtree'
-  "Show hidden files in NERDTree
+  " Show hidden files in NERDTree
   let NERDTreeShowHidden=1
 
   Plug 'flazz/vim-colorschemes'
@@ -123,15 +122,15 @@ if exists('g:vsvim') == 0 && exists('nvim') == 0
   map ? <Plug>(incsearch-backward)\v
   map g/ <Plug>(incsearch-stay)\v
 
-  "Plugins I don't want anymore
-  "Plug 'DJMcMayhem/vim-characterize'
-  "Plug 'ntpeters/vim-better-whitespace'
+  " Plugins I don't want anymore
+  " Plug 'DJMcMayhem/vim-characterize'
+  " Plug 'ntpeters/vim-better-whitespace'
 
 
   call plug#end()
 else
-  "For whatever reason, vim-plug isn't installed.
-  "Load some basic settings.
+  " For whatever reason, vim-plug isn't installed.
+  " Load some basic settings.
   set hlsearch
   set incsearch
   nnoremap n nzz
@@ -148,74 +147,74 @@ elseif s:OS == "linux"
   colorscheme gotham256
 end
 
-"Highlight search matches with an underscore (this is nice because it keeps
-"the matched text very readable still)
+" Highlight search matches with an underscore (this is nice because it keeps
+" the matched text very readable still)
 hi Search ctermfg=NONE ctermbg=NONE cterm=underline guifg=NONE guibg=NONE gui=underline
 
-"Filetype plugin
+" Filetype plugin
 filetype plugin on
 runtime macros/matchit.vim
 
-"We must manually detect 'v' files, since verilog files also have a 'v'
-"extension.
+" We must manually detect 'v' files, since verilog files also have a 'v'
+" extension.
 au BufRead,BufNewFile *.v   set filetype=v
 
 autocmd BufEnter,FileType * :if &filetype == '' | set spell | endif
 autocmd BufEnter,FileType * :if &filetype != '' | set nospell | endif
 
-"Rather than failing a command!, ask for confirmation
+" Rather than failing a command!, ask for confirmation
 set confirm
 
-"In gvim, don't open a dialog box when asking for confirmation
+" In gvim, don't open a dialog box when asking for confirmation
 set guioptions+=c
 
-"Prevents '.swp' files from being placed in the current directory
+" Prevents '.swp' files from being placed in the current directory
 set backupdir=~/.vim/Backups,.
 set directory=~/.vim/Backups,.
 
-"Set cursor shape (xterm on Linux only)
+" Set cursor shape (xterm on Linux only)
 if s:OS == "linux"
   let &t_SI = "\<Esc>[6 q"
   let &t_EI = "\<Esc>[2 q"
 endif
 
-"Set leader to space
+" Set leader to space
 let mapleader=" "
 
-"Shortcut to command!s I use frequently
+" Shortcut to command!s I use frequently
 nnoremap <leader>/ :set hls!<cr>
 nnoremap <leader>= :retab<cr>
 
-"Save and source
+" Save and source
 nnoremap <leader>s :w \| source %<cr>
 
-"Toggle 'spell'
+" Toggle 'spell'
 nnoremap <leader>S :setlocal spell!<cr>
 
-"Mnemonic '(B)rowse'
+" Mnemonic '(B)rowse'
 nnoremap <leader>b :Ebo<cr>
 nnoremap <leader>o :browse old<cr>
 nnoremap <leader>O :browse oldfiles<C-left>filter // <left><left>
 
-"Useful for code-golf explanations
+" Useful for code-golf explanations
 nnoremap <leader>j m`Yp<C-o>v$hhr jhv0r ^
 nnoremap <leader>J m`Yp<C-o>v$r jhv0r ^
 
-"Duplicate up/down
-"Granted, kindof a silly mapping, but why not ¯\_(ツ)_/¯?
+" Duplicate up/down
+" Granted, kindof a silly mapping, but why not ¯\_(ツ)_/¯?
 nnoremap <leader>dk m`YPVr <C-o>y$kP
 nnoremap <leader>dj m`YpVr <C-o>y$jP
 
-"Faster buffer switchingt
+" Faster buffer switchingt
 nnoremap <leader>l :ls<cr>:b<space>
 
-"Faster clipboard copying/pasting
+" Faster clipboard copying/pasting
 nnoremap <leader>y "+y
 nnoremap <leader>Y "+Y
 xnoremap <leader>y "+y
 xnoremap <leader>Y "+Y
 
-"Paste from system clipboard
+" Paste from system clipboard
 nnoremap <leader>p "+p
 nnoremap <leader>P "+P
 xnoremap <leader>p "+p
@@ -226,49 +225,49 @@ nnoremap <leader>t :tabedit<space>
 nnoremap <leader>q :q<cr>
 xnoremap <leader>q :<C-u>q<cr>
 
-"See help options faster
+" See help options faster
 nnoremap <leader>k yi':se <C-r>"?<cr>
 
-"(E)xpand (convert a function template into a function definition)
+" (E)xpand (convert a function template into a function definition)
 nnoremap <leader>e :s/;$/\r{\r    \r}\r<cr>
 xnoremap <leader>e :s/;$/\r{\r    \r}\r<cr>
 
-"(R)eplace all
+" (R)eplace all
 nnoremap <leader>r yiw:%s/\<<C-r>"\>//g<left><left>
 
-"Git mappings
+" Git mappings
 nnoremap <leader>gc :w \| !git commit %<cr>
 nnoremap <leader>gd :!git diff<cr>
 nnoremap <leader>gp :!git push<cr>
 nnoremap <leader>gP :!git pull<cr>
 
-"Search for non-ASCII
+" Search for non-ASCII
 nnoremap <leader>a /\v[^\x00-\x7f]<cr>
 
-"Fold settings
+" Fold settings
 nnoremap <leader>f za
 nnoremap <leader>F [[za
 
 nnoremap <leader>n :cnext<cr>:call histdel('cnext', 1)<cr>
 nnoremap <leader>N :cprev<cr>:call histdel('cnext', 1)<cr>
 
-"A useful map for decoding V-weirdness
+" A useful map for decoding V-weirdness
 nnoremap <leader>ga yl:echo nr2char(char2nr(getreg('"')) % 128)<cr>
 
 
-"Select entire line (minus EOL) with 'vv', entire file (characterwise) with 'VV'
+" Select entire line (minus EOL) with 'vv', entire file (characterwise) with 'VV'
 xnoremap <expr> V mode() ==# "V" ? "gg0voG$h" : "V"
 xnoremap <expr> v mode() ==# "v" ? "0o$h" : "v"
 
-"Train myself to use vim's already awesome indenting feature.
+" Train myself to use vim's already awesome indenting feature.
 let @t=':echo "Use >, not @t!"'
 let @u=':echo "Use <, not @u!"'
 
-"Make it easier to indent a visual selection several times.
+" Make it easier to indent a visual selection several times.
 xnoremap > >gv
 xnoremap < <gv
 
-"Visual commenting
+" Visual commenting
 " 'Comment' is a variable that will be loaded from ftplugin, but if this is a
 " new buffer, it won't have a filetype, so default it to '#'
 let Comment='#'
@@ -276,17 +275,17 @@ let Comment='#'
 xnoremap # :norm 0i<C-r>=Comment<cr><cr>
 xnoremap & :norm ^<C-r>=len(Comment)<cr>x<cr>
 
-"So that I don't have to hit esc
+" So that I don't have to hit esc
 inoremap jk 
 inoremap kj 
 
-"So I can move around in insert
+" So I can move around in insert
 inoremap <C-k> <C-o>gk
 inoremap <C-h> <Left>
 inoremap <C-l> <Right>
 inoremap <C-j> <C-o>gj
 
-"Make working with multiple buffers less of a pain
+" Make working with multiple buffers less of a pain
 set splitright
 set splitbelow
 nnoremap <C-w>v :vnew<cr>
@@ -295,50 +294,50 @@ nnoremap <C-h> <C-w>h
 nnoremap <C-l> <C-w>l
 nnoremap <C-j> <C-w>j
 
-"Automagically resize splits when the host is resized
+" Automagically resize splits when the host is resized
 autocmd VimResized * wincmd =
 
-"Wrap options
+" Wrap options
 set wrap
 set linebreak
 set display+=lastline
 
-"Make basic movements work better with wrapped lines
+" Make basic movements work better with wrapped lines
 nnoremap j gj
 nnoremap gj j
 nnoremap k gk
 nnoremap gk k
 
-"Make backspace delete in normal
+" Make backspace delete in normal
 nnoremap <BS>    <BS>x
 xnoremap <BS>    x
 
 inoremap <C-BS> <C-w>
 
-"Get rid of pesky "ex mode"
+" Get rid of pesky "ex mode"
 nnoremap Q <nop>
 
-"Make re-running macros more convenient (especially useful in vsvim)
+" Make re-running macros more convenient (especially useful in vsvim)
 nnoremap , @@zz
 
-"Make vim behave (slightly more) like a traditional editor
+" Make vim behave (slightly more) like a traditional editor
 set selectmode+=mouse
 snoremap <C-v> <C-o>"+y
 snoremap <C-x> <C-o>"+d
 
 xnoremap <C-c> "+y
 
-"Black hole shortcut
+" Black hole shortcut
 nnoremap <C-d> "_d
 xnoremap <C-d> "_d
 
-"Fun macros:
-"qqfca[0]lyT(f"r'la' || pa == 'f"r'jj0@qq
+" Fun macros:
+" qqfca[0]lyT(f"r'la' || pa == 'f"r'jj0@qq
 
-"Make visual selection more visible
+" Make visual selection more visible
 hi visual term=reverse cterm=reverse guibg=darkGray
 
-"ex command!s
+" ex command!s
 cnoreabbrev rc ~/.vimrc
 cnoreabbrev et tabedit
 cnoreabbrev bo browse old
@@ -374,7 +373,7 @@ endfunction
 com! Ebo call s:TabBrowseOld()
 cnoreabbrev ebo Ebo
 
-"Scripts
+" Scripts
 function! s:DiffWithSaved()
   let filetype=&ft
   diffthis
@@ -402,5 +401,4 @@ endfunction
 command! -nargs=+ GrepBufs call GrepBuffers(<q-args>)
 
 cnoreabbrev GB GrepBufs
-
 
