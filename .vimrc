@@ -228,9 +228,9 @@ xnoremap <leader>q :<C-u>q<cr>
 " See help options faster
 nnoremap <leader>k yi':se <C-r>"?<cr>
 
-" (E)xpand (convert a function template into a function definition)
-nnoremap <leader>e :s/;$/\r{\r    \r}\r<cr>
-xnoremap <leader>e :s/;$/\r{\r    \r}\r<cr>
+" Eval
+nnoremap <leader>e ^C<C-r>=<C-r>"<cr><esc>
+xnoremap <leader>e s<C-r>=<C-r>"<cr>
 
 " (R)eplace all
 nnoremap <leader>r yiw:%s/\<<C-r>"\>//g<left><left>
