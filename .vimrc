@@ -48,6 +48,7 @@ endif
 
 " Sanity options
 syntax on
+set mouse=
 set encoding=utf-8
 set fileencoding=utf-8
 set backspace=2
@@ -321,7 +322,6 @@ nnoremap Q <nop>
 nnoremap , @@zz
 
 " Make vim behave (slightly more) like a traditional editor
-set selectmode+=mouse
 snoremap <C-v> <C-o>"+y
 snoremap <C-x> <C-o>"+d
 
