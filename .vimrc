@@ -48,7 +48,6 @@ endif
 
 " Sanity options
 syntax on
-set mouse=
 set encoding=utf-8
 set fileencoding=utf-8
 set backspace=2
@@ -147,6 +146,23 @@ elseif s:OS == "linux"
   " Compensate for Window's abysmally shitty terminal
   colorscheme gotham256
 end
+
+" Turn the mouse on, but don't move the cursor when refocusing
+if has('timers')
+  set mouse=a
+
+  augroup MouseHack
+    autocmd!
+    autocmd FocusLost * set mouse=
+    autocmd FocusGained * call timer_start(50, 'ReenableMouse')
+  augroup END
+
+  function! ReenableMouse(timer_id)
+    set mouse=a
+  endfunction
+else
+  set mouse=
+endif
 
 " Highlight search matches with an underscore (this is nice because it keeps
 " the matched text very readable still)
