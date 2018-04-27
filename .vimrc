@@ -176,9 +176,6 @@ runtime macros/matchit.vim
 " extension.
 au BufRead,BufNewFile *.v   set filetype=v
 
-autocmd BufEnter,FileType * :if &filetype == '' | set spell | endif
-autocmd BufEnter,FileType * :if &filetype != '' | set nospell | endif
-
 " Rather than failing a command!, ask for confirmation
 set confirm
 
