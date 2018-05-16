@@ -235,6 +235,7 @@ xnoremap <leader>p "+p
 xnoremap <leader>P "+P
 
 nnoremap <leader>t :tabedit<space>
+nnoremap <leader>T :NERDTree<cr>
 
 nnoremap <leader>q :q<cr>
 xnoremap <leader>q :<C-u>q<cr>
