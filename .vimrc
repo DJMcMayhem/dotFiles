@@ -261,7 +261,7 @@ nnoremap <leader>a /\v[^\x00-\x7f]<cr>
 
 " Fold settings
 nnoremap <leader>f za
-nnoremap <leader>F [[za
+nnoremap <expr> <leader>F ":e ".expand('%:p')
 
 nnoremap <leader>n :cnext<cr>:call histdel('cnext', 1)<cr>
 nnoremap <leader>N :cprev<cr>:call histdel('cnext', 1)<cr>
