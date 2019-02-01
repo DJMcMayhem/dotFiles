@@ -8,6 +8,7 @@ let @d='^xxjzz'
 
 "highlight search looks hideous in vsvim
 set nohlsearch
+set number
 
 "Undo plugin specific mappings
 unmap n

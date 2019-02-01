@@ -60,6 +60,7 @@ set guioptions=
 set autoread
 set autochdir
 set matchpairs+=<:>
+set nowrapscan
 
 set noerrorbells
 set visualbell
@@ -82,6 +83,7 @@ if exists('g:vsvim') == 0 && exists('nvim') == 0
   Plug 'tpope/vim-surround'
   Plug 'tpope/vim-repeat'
   Plug 'tpope/vim-endwise'
+  Plug 'tpope/vim-speeddating'
   Plug 'mattn/gist-vim'
   Plug 'mattn/webapi-vim'
   Plug 'tommcdo/vim-exchange'
@@ -108,6 +110,9 @@ if exists('g:vsvim') == 0 && exists('nvim') == 0
 
   Plug 'kshenoy/vim-signature'
 
+  Plug 'ntpeters/vim-better-whitespace'
+  hi link pythonSpaceError NONE
+
   Plug 'haya14busa/incsearch.vim'
   set hlsearch
   let g:incsearch#auto_nohlsearch = 1
@@ -124,7 +129,6 @@ if exists('g:vsvim') == 0 && exists('nvim') == 0
 
   " Plugins I don't want anymore
   " Plug 'DJMcMayhem/vim-characterize'
-  " Plug 'ntpeters/vim-better-whitespace'
 
 
   call plug#end()
@@ -175,6 +179,7 @@ runtime macros/matchit.vim
 " We must manually detect 'v' files, since verilog files also have a 'v'
 " extension.
 au BufRead,BufNewFile *.v   set filetype=v
+au BufRead,BufNewFile *.sv   set isk=@,48-57,_,192-255,#
 
 " Rather than failing a command!, ask for confirmation
 set confirm
@@ -234,8 +239,9 @@ nnoremap <leader>P "+P
 xnoremap <leader>p "+p
 xnoremap <leader>P "+P
 
-nnoremap <leader>t :tabedit<space>
-nnoremap <leader>T :NERDTree<cr>
+" Use <expr> so that leading space isn't highlighted :P
+nnoremap <expr> <leader>t ":tabedit "
+nnoremap <leader>T :NERDTree \| normal B<cr>
 
 nnoremap <leader>q :q<cr>
 xnoremap <leader>q :<C-u>q<cr>
