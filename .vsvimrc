@@ -1,35 +1,46 @@
 "Load all of my settings
 let g:vsvim = 0
-source ~\.vimrc
 
 "For quick commenting and uncommenting
 let @c='0i//jzz'
 let @d='^xxjzz'
 
+let mapleader=' '
+nnoremap <leader>p "*p
+xnoremap <leader>p "*p
+nnoremap <leader>q :q<cr>
+xnoremap <C-c> "*y
+
+nnoremap , @@zz
+
+inoremap jk <esc>
+inoremap kj <esc>
+
+inoremap <C-k> <C-o>k
+inoremap <C-h> <C-o>h
+inoremap <C-l> <C-o>l
+inoremap <C-j> <C-o>j
+
+inoremap <C-BS> <C-w>
+inoremap <C-S-BS> <C-u>
+
+xnoremap > >gv
+xnoremap < <gv
+
 "highlight search looks hideous in vsvim
 set nohlsearch
 set number
 
-"Undo plugin specific mappings
-unmap n
-unmap N
-unmap *
-unmap #
-unmap g*
-unmap g#
-unmap /
-unmap ?
-unmap g/
-
-"<expr> mappings do not work, instead jumping to the command line.
-"Unmap em'
-nunmap vv
-nunmap VV
-xunmap v
-xunmap V
-
 " 'vip' switches to character selection, not line selection. Fix that
 xnoremap ip ipV
+
+set nowrapscan
+set incsearch
+set ignorecase
+set smartcase
+nnoremap n nzz
+nnoremap N Nzz
+nnoremap * *zz
 
 "Keep indent level with 'cc'
 nnoremap cc $v^c
@@ -51,8 +62,6 @@ set autoindent
 set expandtab
 set tabstop=4
 set shiftwidth=4
-
-exec "set listchars-=tab:\\ \\ "
 
 nnoremap Q :q<cr>
 

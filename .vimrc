@@ -176,11 +176,6 @@ hi Search ctermfg=NONE ctermbg=NONE cterm=underline guifg=NONE guibg=NONE gui=un
 filetype plugin on
 runtime macros/matchit.vim
 
-" We must manually detect 'v' files, since verilog files also have a 'v'
-" extension.
-au BufRead,BufNewFile *.v   set filetype=v
-au BufRead,BufNewFile *.sv   set isk=@,48-57,_,192-255,#
-
 " Rather than failing a command!, ask for confirmation
 set confirm
 
@@ -275,14 +270,9 @@ nnoremap <leader>N :cprev<cr>:call histdel('cnext', 1)<cr>
 " A useful map for decoding V-weirdness
 nnoremap <leader>ga yl:echo nr2char(char2nr(getreg('"')) % 128)<cr>
 
-
 " Select entire line (minus EOL) with 'vv', entire file (characterwise) with 'VV'
 xnoremap <expr> V mode() ==# "V" ? "gg0voG$h" : "V"
 xnoremap <expr> v mode() ==# "v" ? "0o$h" : "v"
-
-" Train myself to use vim's already awesome indenting feature.
-let @t=':echo "Use >, not @t!"'
-let @u=':echo "Use <, not @u!"'
 
 " Make it easier to indent a visual selection several times.
 xnoremap > >gv
@@ -351,9 +341,6 @@ xnoremap <C-c> "+y
 nnoremap <C-d> "_d
 xnoremap <C-d> "_d
 
-" Fun macros:
-" qqfca[0]lyT(f"r'la' || pa == 'f"r'jj0@qq
-
 " Make visual selection more visible
 hi visual term=reverse cterm=reverse guibg=darkGray
 
@@ -362,29 +349,6 @@ cnoreabbrev rc ~/.vimrc
 cnoreabbrev et tabedit
 cnoreabbrev bo browse old
 cnoreabbrev cs colorscheme
-
-function! s:TabMode()
-  let g:IndentMode = "Tabs"
-  set noexpandtab
-  exec "set listchars+=tab:\\ \\ "
-
-endfunction
-
-function! s:SpaceMode()
-  let g:IndentMode = "Spaces"
-  set autoindent
-  set expandtab
-  set tabstop=4
-  set shiftwidth=4
-
-  exec "set listchars-=tab:\\ \\ "
-endfunction
-
-call s:SpaceMode()
-
-com! Spaces call s:SpaceMode()
-com! Tabs call s:TabMode()
-nnoremap <leader>i :echo g:IndentMode<CR>
 
 function! s:TabBrowseOld()
   tabedit
@@ -413,12 +377,4 @@ function! BuffersList()
   endfor
   return res
 endfunction
-
-function! GrepBuffers (expression)
-  exec 'vimgrep/'.a:expression.'/ '.join(BuffersList())
-endfunction
-
-command! -nargs=+ GrepBufs call GrepBuffers(<q-args>)
-
-cnoreabbrev GB GrepBufs
 
