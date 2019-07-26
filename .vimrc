@@ -75,10 +75,6 @@ autocmd GUIEnter * set t_vb=
 if exists('g:vsvim') == 0 && exists('nvim') == 0
   call plug#begin()
 
-  command! PU PlugUpgrade | PlugInstall | PlugClean | PlugUpdate | q
-  command! PI PlugInstall | q
-  command! PC PlugClean | q
-
   Plug 'tpope/vim-abolish'
   Plug 'tpope/vim-surround'
   Plug 'tpope/vim-repeat'
