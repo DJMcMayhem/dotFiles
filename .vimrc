@@ -62,6 +62,11 @@ set autochdir
 set matchpairs+=<:>
 set nowrapscan
 
+set expandtab
+set shiftwidth=4
+set tabstop=4
+set smartindent
+
 set noerrorbells
 set visualbell
 set t_vb=
