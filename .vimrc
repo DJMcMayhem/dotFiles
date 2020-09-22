@@ -354,7 +354,6 @@ hi visual term=reverse cterm=reverse guibg=darkGray
 cnoreabbrev rc ~/.vimrc
 cnoreabbrev et tabedit
 cnoreabbrev bo browse old
-cnoreabbrev cs colorscheme
 
 function! s:TabBrowseOld()
   tabedit
