@@ -58,7 +58,6 @@ set showmode
 set showcmd
 set guioptions=
 set autoread
-set autochdir
 set matchpairs+=<:>
 set nowrapscan
 
@@ -105,6 +104,7 @@ if exists('g:vsvim') == 0 && exists('nvim') == 0
   Plug 'scrooloose/nerdtree'
   " Show hidden files in NERDTree
   let NERDTreeShowHidden=1
+  let NERDTreeIgnore = ['\.pyc$', '\.dll$']
 
   Plug 'flazz/vim-colorschemes'
   let g:loaded_colorschemes = 1
@@ -196,6 +196,8 @@ endif
 " Set leader to space
 let mapleader=" "
 
+nnoremap <F5> :silent! wall \| :!python.exe main.py
+
 " Shortcut to command!s I use frequently
 nnoremap <leader>/ :set hls!<cr>
 nnoremap <leader>= :retab<cr>
@@ -210,6 +212,9 @@ nnoremap <leader>S :setlocal spell!<cr>
 nnoremap <leader>b :Ebo<cr>
 nnoremap <leader>o :browse old<cr>
 nnoremap <leader>O :browse oldfiles<C-left>filter // <left><left>
+
+" Mnemonic '(C)hange directory
+nnoremap <leader>c :chdir %:p:h<cr>:pwd<cr>
 
 " Useful for code-golf explanations
 nnoremap <leader>j m`Yp<C-o>v$hhr jhv0r ^
@@ -288,8 +293,8 @@ xnoremap # :norm 0i<C-r>=Comment<cr><cr>
 xnoremap & :norm ^<C-r>=len(Comment)<cr>x<cr>
 
 " So that I don't have to hit esc
-inoremap jk 
-inoremap kj 
+inoremap jk <esc>
+inoremap kj <esc>
 
 " So I can move around in insert
 inoremap <C-k> <C-o>gk

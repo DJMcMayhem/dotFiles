@@ -31,6 +31,9 @@ xnoremap < <gv
 set nohlsearch
 set number
 
+set expandtab
+set shiftwidth=4
+
 " 'vip' switches to character selection, not line selection. Fix that
 xnoremap ip ipV
 
