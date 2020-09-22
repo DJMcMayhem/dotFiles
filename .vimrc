@@ -196,7 +196,7 @@ endif
 " Set leader to space
 let mapleader=" "
 
-nnoremap <F5> :silent! wall \| :!python.exe main.py
+nnoremap <F5> :silent! wall \| :!python.exe main.py<cr>
 
 " Shortcut to command!s I use frequently
 nnoremap <leader>/ :set hls!<cr>
