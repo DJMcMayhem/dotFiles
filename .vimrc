@@ -75,7 +75,7 @@ set nrformats-=octal
 autocmd GUIEnter * set t_vb=
 
 " Plugins
-" if exists('g:loaded_plug')
+" if exists('g:loaded_plug') == 1 &&
 if exists('g:vsvim') == 0 && exists('nvim') == 0
   call plug#begin()
 
@@ -140,6 +140,7 @@ else
   set incsearch
   nnoremap n nzz
   nnoremap N Nzz
+  let g:loaded_colorschemes = 0
 endif
 
 set ignorecase
@@ -193,10 +194,12 @@ if s:OS == "linux"
   let &t_EI = "\<Esc>[2 q"
 endif
 
+
 " Set leader to space
 let mapleader=" "
 
 nnoremap <F5> :silent! wall \| :!python.exe main.py<cr>
+nnoremap <F6> :silent! wall \| :!python.exe %<cr>
 
 " Shortcut to command!s I use frequently
 nnoremap <leader>/ :set hls!<cr>
@@ -288,6 +291,10 @@ xnoremap < <gv
 " 'Comment' is a variable that will be loaded from ftplugin, but if this is a
 " new buffer, it won't have a filetype, so default it to '#'
 let Comment='#'
+
+"For quick commenting and uncommenting
+let @c="0i\<C-r>=g:Comment\<cr>\<esc>jzz"
+let @d=":\<C-u>exec 'norm ^'.strlen(g:Comment).'x'\<cr>jzz"
 
 xnoremap # :norm 0i<C-r>=Comment<cr><cr>
 xnoremap & :norm ^<C-r>=len(Comment)<cr>x<cr>
