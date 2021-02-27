@@ -73,74 +73,13 @@ set nrformats-=octal
 
 autocmd GUIEnter * set t_vb=
 
-" Plugins
-" if exists('g:loaded_plug') == 1 &&
-if exists('g:vsvim') == 0 && exists('nvim') == 0
-  call plug#begin()
-
-  Plug 'tpope/vim-abolish'
-  Plug 'tpope/vim-surround'
-  Plug 'tpope/vim-repeat'
-  Plug 'tpope/vim-endwise'
-  Plug 'tpope/vim-speeddating'
-  Plug 'mattn/gist-vim'
-  Plug 'mattn/webapi-vim'
-  Plug 'tommcdo/vim-exchange'
-  Plug 'wellle/targets.vim'
-  Plug 'matze/vim-move'
-  Plug 'ararslan/license-to-vim'
-  Plug 'vim-utils/vim-husk'
-  Plug 'nessss/vim-gml'
-  Plug 'artnez/vim-wipeout'
-  Plug 'JuliaEditorSupport/julia-vim'
-  Plug 'sheerun/vim-polyglot'
-
-  " The most beautiful colorscheme I have ever seen. This is truly a work of
-  " art. Angels weep the tears of a thousand virgins everytime a new vimmer
-  " finds this <s>colorscheme</s> work of art.
-  Plug 'KeyboardFire/hotdog.vim'
-
-  Plug 'scrooloose/nerdtree'
-  " Show hidden files in NERDTree
-  let NERDTreeShowHidden=1
-  let NERDTreeIgnore = ['\.pyc$', '\.dll$', '\.qmlc$', '\.jsc$']
-
-  Plug 'flazz/vim-colorschemes'
-  let g:loaded_colorschemes = 1
-
-  Plug 'kshenoy/vim-signature'
-
-  Plug 'ntpeters/vim-better-whitespace'
-  hi link pythonSpaceError NONE
-
-  Plug 'haya14busa/incsearch.vim'
-  set hlsearch
-  let g:incsearch#auto_nohlsearch = 1
-  map n  <Plug>(incsearch-nohl-n)zz
-  map N  <Plug>(incsearch-nohl-N)zz
-  map *  <Plug>(incsearch-nohl-*)zz
-  map #  <Plug>(incsearch-nohl-#)zz
-  map g* <Plug>(incsearch-nohl-g*)zz
-  map g# <Plug>(incsearch-nohl-g#)zz
-
-  map / <Plug>(incsearch-forward)\v
-  map ? <Plug>(incsearch-backward)\v
-  map g/ <Plug>(incsearch-stay)\v
-
-  " Plugins I don't want anymore
-  " Plug 'DJMcMayhem/vim-characterize'
-
-
-  call plug#end()
-else
-  " For whatever reason, vim-plug isn't installed.
-  " Load some basic settings.
-  set hlsearch
-  set incsearch
-  nnoremap n nzz
-  nnoremap N Nzz
-  let g:loaded_colorschemes = 0
-endif
+" For whatever reason, vim-plug isn't installed.
+" Load some basic settings.
+set hlsearch
+set incsearch
+nnoremap n nzz
+nnoremap N Nzz
+let g:loaded_colorschemes = 0
 
 set ignorecase
 set smartcase
@@ -257,7 +196,7 @@ nnoremap <leader>e ^C<C-r>=<C-r>"<cr><esc>
 xnoremap <leader>e s<C-r>=<C-r>"<cr>
 
 " (R)eplace all
-nnoremap <leader>r yiw:%s/\<<C-r>"\>//g<left><left>
+nnoremap <leader>r *N:%s///g<left><left>
 
 " Git mappings
 nnoremap <leader>gc :w \| !git commit %<cr>
