@@ -24,6 +24,8 @@ if s:OS == "windows"
   exe 'set rtp+=' . expand('$HOME/.vim/after')
   exe 'set rtp+=' . expand('$HOME/.vim')
 
+  set guifont=Liberation_Mono:h10:cANSI:qDRAFT
+
   inoremap <C-s> <C-o>:w<cr>
   nnoremap <C-s> :w<cr>
 endif
