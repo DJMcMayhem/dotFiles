@@ -24,7 +24,11 @@ if s:OS == "windows"
   exe 'set rtp+=' . expand('$HOME/.vim/after')
   exe 'set rtp+=' . expand('$HOME/.vim')
 
-  set guifont=Consolas:h11:cANSI:qDRAFT
+  if has('nvim')
+    set guifont="Lucida Console"
+  else
+    set guifont=Consolas:h11:cANSI:qDRAFT
+  endif
 
   inoremap <C-s> <C-o>:w<cr>
   nnoremap <C-s> :w<cr>
@@ -61,11 +65,13 @@ set showcmd
 set guioptions=
 set autoread
 set matchpairs+=<:>
+set formatoptions-=t
 
 set expandtab
 set shiftwidth=4
 set tabstop=4
-set smartindent
+set nosmartindent
+set textwidth=120
 
 set noerrorbells
 set visualbell
@@ -83,19 +89,22 @@ if exists('g:vsvim') == 0 && exists('nvim') == 0
   Plug 'tpope/vim-abolish'
   Plug 'tpope/vim-surround'
   Plug 'tpope/vim-repeat'
-  Plug 'tpope/vim-endwise'
+  " Plug 'tpope/vim-endwise'
+  " Currently has a lua error
   Plug 'tpope/vim-speeddating'
   Plug 'mattn/gist-vim'
   Plug 'mattn/webapi-vim'
   Plug 'tommcdo/vim-exchange'
   Plug 'wellle/targets.vim'
+  Plug 'wellle/context.vim'
   Plug 'matze/vim-move'
   Plug 'ararslan/license-to-vim'
   Plug 'vim-utils/vim-husk'
   Plug 'nessss/vim-gml'
   Plug 'artnez/vim-wipeout'
-  Plug 'JuliaEditorSupport/julia-vim'
+
   Plug 'sheerun/vim-polyglot'
+  Plug 'peterhoeg/vim-qml'
 
   " The most beautiful colorscheme I have ever seen. This is truly a work of
   " art. Angels weep the tears of a thousand virgins everytime a new vimmer
@@ -129,9 +138,7 @@ if exists('g:vsvim') == 0 && exists('nvim') == 0
   map ? <Plug>(incsearch-backward)\v
   map g/ <Plug>(incsearch-stay)\v
 
-  " Plugins I don't want anymore
-  " Plug 'DJMcMayhem/vim-characterize'
-
+  Plug 'habamax/vim-godot'
 
   call plug#end()
 else
