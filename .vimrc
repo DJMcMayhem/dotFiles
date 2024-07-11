@@ -1,3 +1,4 @@
+" Lock screen to prevent editing of files
 if has("unix")
   let s:uname = system("uname -s")
   if s:uname == "Darwin\n"
@@ -45,8 +46,11 @@ if has("gui_running")
     endif
     redraw
   endfunction
-  nnoremap <C-z> :call ToggleFullscreen()<cr><esc>
-  inoremap <C-z> <C-o>:call ToggleFullscreen()<cr><esc>
+
+  if !has('nvim')
+    nnoremap <C-z> :call ToggleFullscreen()<cr><esc>
+    inoremap <C-z> <C-o>:call ToggleFullscreen()<cr><esc>
+  endif
 
   " Are we running vim-diff? If so, change gvim to fullscreen
   autocmd VimEnter * exec &diff ? "simalt ~x" : ""
@@ -66,6 +70,7 @@ set guioptions=
 set autoread
 set matchpairs+=<:>
 set formatoptions-=t
+set nohidden
 
 set expandtab
 set shiftwidth=4
@@ -78,6 +83,24 @@ set visualbell
 set t_vb=
 
 set nrformats-=octal
+
+set laststatus=2
+
+set statusline=
+set statusline+=%#PmenuSel#
+set statusline+=%{getcwd()}
+set statusline+=%#LineNr#
+set statusline+=\ %f
+set statusline+=%m
+set statusline+=%=
+set statusline+=%#CursorColumn#
+set statusline+=\ %y
+set statusline+=\ %{&fileencoding?&fileencoding:&encoding}
+set statusline+=\[%{&fileformat}\]
+set statusline+=\ %p%%
+set statusline+=\ %l:%c
+set statusline+=\
+
 
 autocmd GUIEnter * set t_vb=
 
@@ -139,6 +162,11 @@ if exists('g:vsvim') == 0 && exists('nvim') == 0
   map g/ <Plug>(incsearch-stay)\v
 
   Plug 'habamax/vim-godot'
+
+  if has('nvim')
+    Plug 'nvim-lualine/lualine.nvim'
+    Plug 'prabirshrestha/vim-lsp'
+  endif
 
   call plug#end()
 else
@@ -206,8 +234,12 @@ endif
 " Set leader to space
 let mapleader=" "
 
-nnoremap <F5> :silent! wall \| :!python.exe main.py<cr>
-nnoremap <F6> :silent! wall \| :!python.exe %<cr>
+if has('nvim')
+  nnoremap Y yy
+endif
+
+nnoremap <F5> :silent! wall \| :vsplit \| terminal! python.exe main.py<cr>
+nnoremap <F6> :silent! wall \| :vsplit \| terminal! python.exe %<cr>
 
 " Shortcut to command!s I use frequently
 nnoremap <leader>/ :set hls!<cr>
@@ -224,17 +256,14 @@ nnoremap <leader>b :Ebo<cr>
 nnoremap <leader>o :browse old<cr>
 nnoremap <leader>O :browse oldfiles<C-left>filter // <left><left>
 
+nnoremap <expr> <leader>d (&diff ? ":diffoff<cr>" : ":diffthis<cr>")
+
 " Mnemonic '(C)hange directory
 nnoremap <leader>c :chdir %:p:h<cr>:pwd<cr>
 
 " Useful for code-golf explanations
 nnoremap <leader>j m`Yp<C-o>v$hhr jhv0r ^
 nnoremap <leader>J m`Yp<C-o>v$r jhv0r ^
-
-" Duplicate up/down
-" Granted, kindof a silly mapping, but why not ¯\_(ツ)_/¯?
-nnoremap <leader>dk m`YPVr <C-o>y$kP
-nnoremap <leader>dj m`YpVr <C-o>y$jP
 
 " Faster buffer switchingt
 nnoremap <leader>l :ls<cr>:b<space>
@@ -316,6 +345,8 @@ inoremap <C-k> <C-o>gk
 inoremap <C-h> <Left>
 inoremap <C-l> <Right>
 inoremap <C-j> <C-o>gj
+
+inoremap <S-Tab> <C-o><<
 
 " Make working with multiple buffers less of a pain
 set splitright
